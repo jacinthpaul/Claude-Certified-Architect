@@ -11,6 +11,17 @@ project on a screen, step through, and discuss in a teaching session.
 > interactive 12-question quiz, and read the cheat sheet — right in your browser. (Loads
 > React from a CDN; nothing to install. Auto-redeploys on every push.)
 
+> ### 🆕 Also here: Claude Certified Associate — Foundations prep console
+> **[https://jacinthpaul.github.io/Claude-Certified-Architect/associate/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate/)**
+>
+> A separate self-paced prep console for the **Claude Certified Associate – Foundations**
+> exam (CCAO-F): all 7 blueprint domains as 30 lessons with claude.ai chat walkthroughs,
+> the 3 official sample questions + 27 practice questions, 6 business scenarios, a cheat
+> sheet, and a blueprint-weighted 60-question mock exam (scored 100–1000, pass ≥ 720).
+> Content source: [`associate/content/`](associate/content/) · console:
+> [`ui/console-associate/`](ui/console-associate/) · regenerate with
+> `python3 ui/console-associate/build_data.py`.
+
 ## 🎥 Video walkthrough
 
 A quick overview of the Architect Foundations Exam topics and exam questions — click to watch on YouTube:
