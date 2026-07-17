@@ -1,26 +1,28 @@
-# Claude Certified Architect — Foundations: A Runnable Teaching Codebase
+# Claude Certification Exam Prep — Foundations Consoles
+
+Free, self-paced exam-prep consoles for Claude certifications — one console per
+certification, deployed together as a single GitHub Pages site. **No install: open a
+link and start studying.**
+
+| Certification | Live console | Study experience |
+|---|---|---|
+| **Claude Certified Architect – Foundations** | [jacinthpaul.github.io/Claude-Certified-Architect](https://jacinthpaul.github.io/Claude-Certified-Architect/) | 5 domains · 30 lessons with **runnable Python demos** · 6 scenario systems · cheat sheet · 60-question mock exam · progress + certificate |
+| **Claude Certified Associate – Foundations (CCAO-F)** | […/associate/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate/) | 7 domains · 30 lessons with **claude.ai chat walkthroughs** · 6 business scenarios · cheat sheet · blueprint-weighted 60-question mock exam · progress + certificate |
+
+Both consoles are self-paced courses: a "Start here" page, per-lesson questions you answer
+until correct, a timed mock exam scored 100–1000 (pass ≥ 720, like the real exams), and a
+completion certificate. Progress is saved in your browser. More certification consoles
+(and a unified hub) are planned — see [CLAUDE.md](CLAUDE.md) for the multi-console
+strategy this repo follows.
+
+---
+
+## Claude Certified Architect — Foundations: a runnable teaching codebase
 
 A hands-on companion to the **Claude Certified Architect – Foundations** exam. Every
 concept from the study guide is turned into a small, **runnable** Python demo you can
-project on a screen, step through, and discuss in a teaching session.
-
-> ### ▶ Play with it online — no install
-> **[https://jacinthpaul.github.io/Claude-Certified-Architect/](https://jacinthpaul.github.io/Claude-Certified-Architect/)**
->
-> The hosted **Exam Prep Console**: browse all 5 domains / 30 tasks, run each demo, take the
-> interactive 12-question quiz, and read the cheat sheet — right in your browser. (Loads
-> React from a CDN; nothing to install. Auto-redeploys on every push.)
-
-> ### 🆕 Also here: Claude Certified Associate — Foundations prep console
-> **[https://jacinthpaul.github.io/Claude-Certified-Architect/associate/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate/)**
->
-> A separate self-paced prep console for the **Claude Certified Associate – Foundations**
-> exam (CCAO-F): all 7 blueprint domains as 30 lessons with claude.ai chat walkthroughs,
-> the 3 official sample questions + 27 practice questions, 6 business scenarios, a cheat
-> sheet, and a blueprint-weighted 60-question mock exam (scored 100–1000, pass ≥ 720).
-> Content source: [`associate/content/`](associate/content/) · console:
-> [`ui/console-associate/`](ui/console-associate/) · regenerate with
-> `python3 ui/console-associate/build_data.py`.
+project on a screen, step through, and discuss in a teaching session — the hosted console
+above is generated from this codebase.
 
 ## 🎥 Video walkthrough
 
@@ -139,6 +141,43 @@ running**, shows the anti-patterns the exam uses as distractors, and ends with t
 
 ---
 
+## Claude Certified Associate — Foundations (CCAO-F) console
+
+A separate, independent prep console for the **Associate Foundations** exam — built for
+its non-technical audience (operations, marketing, project management, education,
+communications), so lessons show **claude.ai chat walkthroughs** (a weak prompt vs an
+improved prompt, with Claude's responses and commentary) instead of terminal demos.
+
+**Open it:** **[https://jacinthpaul.github.io/Claude-Certified-Architect/associate/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate/)**
+
+What's inside — all aligned to the official CCAO-F Exam Guide (60 items · 120 min ·
+scaled 100–1000 · pass ≥ 720):
+
+- **7 blueprint domains** with the official weights: Prompting 14% · Output Evaluation 21% ·
+  Product & Model Selection 12% · Workflow Integration 16% · Configuration & Knowledge 12% ·
+  Governance & Responsible Use 15% · Troubleshooting 10%.
+- **30 lessons** — one per blueprint objective — each with a chat walkthrough, concept,
+  analogy, anti-pattern vs right way, common confusion, exam tip, and a completion question.
+- **The 3 official sample questions** (verbatim) + 27 authored practice questions.
+- **60-question mock exam** distributed exactly per the blueprint weights, with exam/practice
+  modes, a timer, and a per-domain score breakdown.
+- **6 end-to-end business scenarios** and a **cheat sheet** of high-yield facts.
+
+Where things live:
+
+| Piece | Path |
+|---|---|
+| Console app (React, static) | [`ui/console-associate/`](ui/console-associate/) |
+| Course content (source of truth) | [`associate/content/`](associate/content/) |
+| Blueprint → lesson map + authoring guide | [`associate/README.md`](associate/README.md) |
+| Data generator (validates + emits `data.js`) | `python3 ui/console-associate/build_data.py` |
+
+The two consoles are deliberate **independent forks** (separate app code, styles, and
+browser storage) — enhancing one never affects the other. The change-scope rules for
+maintaining them live in [CLAUDE.md](CLAUDE.md).
+
+---
+
 ## Repository layout
 
 ```
@@ -147,14 +186,18 @@ running**, shows the anti-patterns the exam uses as distractors, and ends with t
 ├── run_all.py                 ← teaching playlist + smoke test
 ├── requirements.txt           ← only needed for LIVE (API) mode
 ├── .env.example
+├── CLAUDE.md                  ← multi-console maintenance strategy (read before enhancing)
 ├── ccarch/                    ← shared toolkit (display + Claude client w/ simulator)
-├── domains/                   ← 30 task demos across 5 domains (+ Domain 3 config artifacts)
-├── scenarios/                 ← 6 scenario walkthroughs + functional app.py each + run.py
-├── exam/                      ← 12 sample questions, cheat sheet, prep exercises
+├── domains/                   ← Architect: 30 task demos across 5 domains
+├── scenarios/                 ← Architect: 6 scenario walkthroughs + functional app.py each
+├── exam/                      ← Architect: sample questions, mock bank, cheat sheet
+├── associate/                 ← Associate (CCAO-F): course content source + blueprint map
+│   └── content/               ← domains, lessons, questions, mock bank, scenarios, cheatsheet
 ├── teaching/                  ← lesson plan / session guide
 ├── ui/                        ← built-in zero-dependency web console
-│   └── console/               ← React Exam Prep Console (hosted on GitHub Pages)
-└── .github/workflows/         ← CI smoke test + GitHub Pages deploy
+│   ├── console/               ← Architect React console (hosted at /)
+│   └── console-associate/     ← Associate React console (hosted at /associate/)
+└── .github/workflows/         ← CI smoke test + GitHub Pages deploy (stages BOTH consoles)
 ```
 
 ## The web UI
@@ -168,9 +211,10 @@ The polished console: a dashboard, domain/task sidebar, **Scenarios** and **Chea
 views, light/dark themes, "mark covered" progress, and the interactive 12-question quiz.
 
 - **Hosted (zero setup):** **[https://jacinthpaul.github.io/Claude-Certified-Architect/](https://jacinthpaul.github.io/Claude-Certified-Architect/)**
-  — published from `ui/console/` by `.github/workflows/pages.yml` on every push. As a static
-  page it shows the demo output baked into the page; the sidebar, quiz, and cheat sheet are
-  fully interactive.
+  — `.github/workflows/pages.yml` stages this console at `/` and the Associate console at
+  `/associate/` into one Pages site and deploys on every push. As a static page it shows
+  the demo output baked into the page; the sidebar, quiz, and cheat sheet are fully
+  interactive.
 - **Locally, with live demo runs:** `python3 ui/console/api_server.py` then open
   `http://127.0.0.1:8000` — clicking **Run** executes the actual demo file and streams its
   real output. See `ui/console/README.md`.
@@ -212,5 +256,6 @@ They're deterministic and offline (no API key). See `scenarios/README.md`.
 See `teaching/teaching_guide.md` for a ready-to-run session plan, and each
 `domains/*/README.md` for a per-domain index.
 
-*Built as a study and teaching aid based on the official Exam Guide and the Foundations
-tutorial. For educational use.*
+*Both consoles are independent, community-made study and teaching aids based on the
+official Exam Guides — not official Anthropic products. Always treat the official Exam
+Guide as the authoritative source. For educational use.*
