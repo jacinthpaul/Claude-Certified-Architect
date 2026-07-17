@@ -1,12 +1,17 @@
-name: Deploy Exam Prep Console to GitHub Pages
+name: Deploy Exam Prep Consoles to GitHub Pages
 
-# Publishes ui/console/ as a static site. The React console loads React/Babel from a CDN
-# and, with no backend reachable, falls back to the demo output baked into assets/data.js —
-# so it is fully interactive as a static page (sidebar, demos, quiz, cheat sheet, scenarios).
+# Publishes BOTH static consoles as one Pages site:
+#   /            -> ui/console            (Claude Certified Architect – Foundations)
+#   /associate/  -> ui/console-associate  (Claude Certified Associate – Foundations)
+# Each console loads React/Babel from a CDN and runs fully client-side from the
+# content baked into its assets/data.js — no backend needed on Pages.
 
 on:
   push:
-    branches: [claude/architect-exam-codebase-7ytdjz, main]
+    branches:
+      - claude/architect-exam-codebase-7ytdjz
+      - claude/associate-foundations-course-plan-aiqsgq
+      - main
   workflow_dispatch:
 
 permissions:
@@ -30,12 +35,15 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Upload the console as the site
+      - name: Stage both consoles into one site
+        run: |
+          mkdir -p _site/associate
+          cp -r ui/console/. _site/
+          cp -r ui/console-associate/. _site/associate/
+      - name: Upload the site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ui/console
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-
-# trigger: redeploy after Pages enablement
