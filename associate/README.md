@@ -1,7 +1,7 @@
 # Claude Certified Associate — Foundations (CCAO-F) course content
 
 Source of truth for the **Associate Foundations Exam Prep Console** hosted at
-[/associate/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate/)
+[/associate-foundations/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate-foundations/)
 (code in [`ui/console-associate/`](../ui/console-associate/)).
 
 Everything is aligned to the official **Claude Certified Associate – Foundations
