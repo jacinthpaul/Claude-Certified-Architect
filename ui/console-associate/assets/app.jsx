@@ -922,11 +922,12 @@ function App() {
               “Whatever you do, work at it with all your heart, as working for the Lord.”
               <span className="foot-verse-ref">— Colossians 3:23</span>
             </p>
+            <p className="foot-built">Built by <b>Jacinth Paul</b> — to help aspirants on their Claude Certification journey.</p>
             <p className="foot-disclaimer">
               This is an independent, community-made study aid — <b>not an official Anthropic
               product</b> and not affiliated with or endorsed by Anthropic. It’s supporting
-              material to help you prepare for the Claude Certified Associate — Foundations exam.
-              Always refer to Anthropic’s official Exam Guide as the authoritative source.
+              material to help you prepare for the Claude certification exams.
+              Always refer to Anthropic’s official Exam Guides as the authoritative source.
             </p>
           </footer>
         </div>
