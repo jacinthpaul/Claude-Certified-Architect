@@ -916,6 +916,10 @@ function App() {
             <span className="mono" style={{ fontSize: 11.5, color: "var(--text-faint)" }}>{completeCount}/{TOTAL}</span>
           </div>
           {name && name.trim() && <span className="greet">Hi, {name.trim().split(" ")[0]}</span>}
+          <a className="tb-btn" href="../" title="Back to the Certification Hub">
+            <Svg d={Icon.grid} size={15} cls="tb-icon" />
+            Hub
+          </a>
           <button className="tb-btn" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
             <Svg d={theme === "light" ? Icon.moon : Icon.sun} size={15} cls="tb-icon" />
             {theme === "light" ? "Dark" : "Light"}
