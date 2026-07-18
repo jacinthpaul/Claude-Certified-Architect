@@ -178,10 +178,31 @@ a:hover { color: var(--clay); }
 .foot-note {
   border-top: 1px solid var(--line);
   padding: 26px 0 48px;
-  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  font-size: 13px; color: var(--ink-faint);
+  text-align: center;
 }
-.foot-note .mono { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; }
+.foot-verse {
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+.foot-verse-ref {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+.foot-disclaimer {
+  font-size: 10px;
+  line-height: 1.7;
+  color: var(--ink-faint);
+  margin: 0 auto;
+  max-width: 680px;
+}
+.foot-disclaimer b { color: var(--ink-soft); }
 
 /* ---------- responsive ---------- */
 @media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } }
@@ -323,8 +344,16 @@ a:hover { color: var(--clay); }
   </main>
 
   <footer class="foot-note">
-    <span>An independent, community-built study resource. Not affiliated with Anthropic.</span>
-    <span class="mono">CLAUDE-CERTIFIED · 2026</span>
+    <p class="foot-verse">
+      “Whatever you do, work at it with all your heart, as working for the Lord.”
+      <span class="foot-verse-ref">— Colossians 3:23</span>
+    </p>
+    <p class="foot-disclaimer">
+      This is an independent, community-made study aid — <b>not an official Anthropic
+      product</b> and not affiliated with or endorsed by Anthropic. It’s supporting
+      material to help you prepare for the Claude certification exams.
+      Always refer to Anthropic’s official Exam Guides as the authoritative source.
+    </p>
   </footer>
 </div>
 
