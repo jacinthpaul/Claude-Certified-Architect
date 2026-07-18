@@ -167,6 +167,30 @@ a:hover { color: var(--clay); }
   border-radius: 999px; padding: 4px 9px;
 }
 
+/* featured card — the most sought-after cert */
+.cert.featured {
+  border: 1.5px solid var(--clay);
+  background: linear-gradient(180deg, #FFFDF9 0%, var(--cream-card) 55%, rgba(193,112,77,0.06) 100%);
+  box-shadow: 0 2px 8px rgba(193,112,77,0.10), 0 16px 44px rgba(193,112,77,0.14);
+}
+.cert.featured::before {
+  content: "★ Most popular";
+  color: #fff; background: var(--clay);
+  border-color: var(--clay-deep);
+}
+.cert.featured:hover, .cert.featured:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--clay-deep);
+  box-shadow: 0 4px 12px rgba(193,112,77,0.14), 0 24px 56px rgba(193,112,77,0.20);
+}
+.cert.featured .cta {
+  color: #fff; background: var(--clay);
+  padding: 9px 18px; border-radius: 999px;
+  transition: background .15s ease;
+}
+.cert.featured:hover .cta, .cert.featured:focus-visible .cta { background: var(--clay-deep); }
+.cert.featured .cta .arr { transition: transform .18s ease; }
+
 /* soon cards */
 .cert.soon .seal { opacity: 0.42; filter: saturate(0.55); }
 .cert.soon h2 { color: var(--ink-soft); }
@@ -301,8 +325,8 @@ a:hover { color: var(--clay); }
       </div>
     </a>
 
-    <!-- Architect – Foundations (active) -->
-    <a class="cert active" href="architect-foundations/">
+    <!-- Architect – Foundations (active, featured) -->
+    <a class="cert active featured" href="architect-foundations/">
       <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
         <polygon points="100,5 134,12 162,32 177,64 179,100 168,134 144,160 110,175 74,174 42,156 20,128 11,92 18,56 42,28 70,11" fill="#C1704D"></polygon>
         <defs><path id="arcF2" d="M 40 62 A 72 72 0 0 1 160 62"></path></defs>
