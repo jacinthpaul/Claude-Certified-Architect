@@ -768,7 +768,7 @@ function TutorialDownloads() {
     <>
       <div className="spacer-l"></div>
       <h2 className="section-title" style={{ marginBottom: 14 }}><span className="nav-dot" style={{ background: "var(--accent)" }}></span>Download the tutorial</h2>
-      <div className="course-map">
+      <div className="dl-grid">
         {items.map((t) => (
           <a key={t.file} className="card dl-card" href={t.file} download target="_blank" rel="noopener">
             <div className="map-ic"><Svg d={Icon.download} size={18} /></div>
