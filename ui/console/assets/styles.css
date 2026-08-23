@@ -450,6 +450,15 @@ a.tb-btn { text-decoration: none; }
 .map-ic { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); border: 1px solid color-mix(in oklch, var(--accent) 28%, transparent); flex: none; }
 .map-card h4 { margin: 0 0 4px; font-size: 14px; }
 .map-card p { margin: 0; font-size: 12.5px; color: var(--text-soft); line-height: 1.5; }
+/* tutorial download cards (Start here) */
+.dl-card { padding: 16px 18px; display: flex; gap: 13px; align-items: flex-start; text-decoration: none; color: inherit; transition: border-color .15s ease, transform .15s ease; }
+.dl-card:hover { border-color: color-mix(in oklch, var(--accent) 45%, var(--border)); transform: translateY(-1px); }
+.dl-card h4 { margin: 0 0 4px; font-size: 14px; }
+.dl-card p { margin: 0; font-size: 12.5px; color: var(--text-soft); line-height: 1.5; }
+.dl-body { min-width: 0; }
+.dl-meta { display: inline-block; margin-top: 8px; font-size: 11px; color: var(--text-faint); letter-spacing: 0.02em; }
+@media (prefers-reduced-motion: reduce) { .dl-card { transition: none; } .dl-card:hover { transform: none; } }
+
 .anatomy { padding: 8px 6px; }
 .anat-step { display: grid; grid-template-columns: 30px 150px 1fr; gap: 12px; align-items: center; padding: 11px 14px; border-top: 1px dashed var(--border); }
 .anat-step:first-child { border-top: none; }

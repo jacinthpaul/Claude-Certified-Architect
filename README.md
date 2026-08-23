@@ -198,9 +198,33 @@ maintaining them live in [CLAUDE.md](CLAUDE.md).
 ├── ui/                        ← built-in zero-dependency web console
 │   ├── hub/                   ← Certification Hub landing page (hosted at /)
 │   ├── console/               ← Architect React console (hosted at /architect-foundations/)
+│   │   └── tutorials/         ← downloadable tutorial PDFs for this course
 │   └── console-associate/     ← Associate React console (hosted at /associate-foundations/)
+│       └── tutorials/         ← downloadable tutorial PDFs for this course
 └── .github/workflows/         ← CI smoke test + GitHub Pages deploy (stages hub + consoles)
 ```
+
+## Tutorial PDFs
+
+Each course ships its printable companion handbooks inside its own console folder,
+so they deploy under that course's path and share as plain, permanent links:
+
+| Tutorial | Link |
+|---|---|
+| Architect – Foundations · Tutorial 1 | [`…/architect-foundations/tutorials/claude-certified-architect-foundations-tutorial-1.pdf`](https://jacinthpaul.github.io/Claude-Certified-Architect/architect-foundations/tutorials/claude-certified-architect-foundations-tutorial-1.pdf) |
+
+They are surfaced in two places: a **Download the tutorial** card (and a sidebar
+*Downloads* link) on each console's Start here page, and a **Study material** list
+at the bottom of the hub.
+
+Adding one is a file drop plus a config entry — no app code changes:
+
+1. put the PDF in `ui/console<-course>/tutorials/`;
+2. add an entry to the `tutorials` array in that console's `assets/config.js`;
+3. add one `<li>` to the downloads list in `ui/hub/index.html`;
+4. bump the console's `?v=YYYYMMDDx` cache-bust query.
+
+A console whose `tutorials` array is empty hides the section entirely.
 
 ## The web UI
 

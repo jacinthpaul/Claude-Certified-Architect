@@ -14,4 +14,17 @@ window.CCA_CONFIG = {
   // Build the run URL for a task id ("2.4") or scenario number.
   runUrl(id) { return `${this.apiBase}/api/run?task=${encodeURIComponent(id)}`; },
   scenarioUrl(n) { return `${this.apiBase}/api/run?scenario=${encodeURIComponent(n)}`; },
+
+  // Downloadable tutorial handbooks for THIS course. Paths are relative to the
+  // console folder, which the Pages workflow copies verbatim, so each file is
+  // served from /<course>/tutorials/<file>.pdf. Add one entry per PDF; an empty
+  // list hides the console's Downloads section entirely.
+  tutorials: [
+    {
+      title: "Tutorial 1 — Foundations handbook",
+      blurb: "The full Architect Foundations walkthrough in print form: the five exam domains, the architecture patterns behind them, and worked examples you can read away from the console.",
+      file: "tutorials/claude-certified-architect-foundations-tutorial-1.pdf",
+      meta: "PDF · 41 pages · 0.9 MB",
+    },
+  ],
 };

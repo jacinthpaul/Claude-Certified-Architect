@@ -29,6 +29,7 @@ const Icon = {
   refresh: "M21 12a9 9 0 1 1-3-6.7M21 4v4h-4",
   menu: "M3 6h18M3 12h18M3 18h18",
   close: "M6 6l12 12M18 6L6 18",
+  download: "M12 3v12M7 11l5 5 5-5M4 19h16",
 };
 function Svg({ d, size = 16, sw = 1.8, fill = "none", cls }) {
   return (
@@ -247,6 +248,8 @@ function StartHere({ name, setName, completeCount, firstIncomplete, goTask, goto
           </div>
         ))}
       </div>
+      <TutorialDownloads />
+
       <p className="mono" style={{ marginTop: 18, color: "var(--text-faint)", fontSize: 12.5 }}>
         5 domains · {TOTAL} lessons · 6 scenarios · {CCA.questions.length} questions
       </p>
@@ -766,6 +769,37 @@ function Complete({ name, goto, resetProgress }) {
   );
 }
 
+/* ---------- Tutorial downloads ----------
+   Rendered from the course's own config (window.CCA_CONFIG.tutorials), so a new
+   handbook is a config + file drop — no app code changes. Renders nothing when
+   the course has no PDFs yet. */
+function tutorialList() {
+  const cfg = window.CCA_CONFIG || {};
+  return Array.isArray(cfg.tutorials) ? cfg.tutorials : [];
+}
+function TutorialDownloads() {
+  const items = tutorialList();
+  if (!items.length) return null;
+  return (
+    <>
+      <div className="spacer-l"></div>
+      <h2 className="section-title" style={{ marginBottom: 14 }}><span className="nav-dot" style={{ background: "var(--accent)" }}></span>Download the tutorial</h2>
+      <div className="course-map">
+        {items.map((t) => (
+          <a key={t.file} className="card dl-card" href={t.file} download target="_blank" rel="noopener">
+            <div className="map-ic"><Svg d={Icon.download} size={18} /></div>
+            <div className="dl-body">
+              <h4>{t.title}</h4>
+              <p>{t.blurb}</p>
+              <span className="dl-meta mono">{t.meta}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </>
+  );
+}
+
 /* ---------- Sidebar ---------- */
 function Sidebar({ route, goto, goTask, progress, completeCount, drawerOpen, onClose }) {
   const [open, setOpen] = useState(() => ({ [route.taskId ? CCA.taskById[route.taskId]?.d : "d1"]: true }));
@@ -830,6 +864,16 @@ function Sidebar({ route, goto, goTask, progress, completeCount, drawerOpen, onC
             })}
           </div>
         </div>
+        {tutorialList().length > 0 && (
+          <div className="nav-group">
+            <div className="nav-label">Downloads</div>
+            {tutorialList().map((t) => (
+              <a key={t.file} className="nav-item" href={t.file} download target="_blank" rel="noopener">
+                <Svg d={Icon.download} size={16} /> {t.title}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
       <div className="sb-foot">
         <div className="mono" style={{ fontSize: 11, color: "var(--text-faint)", lineHeight: 1.6 }}>

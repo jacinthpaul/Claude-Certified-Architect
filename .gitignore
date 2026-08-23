@@ -23,3 +23,6 @@ ui/console/console_snapshot.html
 node_modules/
 package-lock.json
 package.json
+
+# staged Pages site (built by hand for local verification)
+_site/

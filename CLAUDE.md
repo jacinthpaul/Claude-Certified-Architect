@@ -57,6 +57,21 @@ When asked for an enhancement, first determine the scope — ask if unclear:
    config for branding/namespace/accent. Until then, fork-and-port is the
    deliberate trade-off — do not extract shared code prematurely.
 
+## Tutorial PDFs
+
+Downloadable handbooks live **per course**, in that console's own folder:
+`ui/console/tutorials/`, `ui/console-associate/tutorials/`, and so on. The Pages
+workflow already copies each console folder wholesale, so a PDF dropped there is
+served at `/<course>/tutorials/<file>.pdf` with no workflow change.
+
+Naming: `claude-certified-<cert>-<tier>-tutorial-<n>.pdf`.
+
+The console learns about its PDFs only from the `tutorials` array in its
+`assets/config.js` (title, blurb, relative `file`, `meta`) — per rule 5 above,
+never from `app.jsx`. An empty array hides the console's Downloads section.
+Adding a tutorial is: drop the file, add the config entry, add one `<li>` to the
+downloads list in `ui/hub/index.html`, bump the console's cache-bust query.
+
 ## Build & verify
 
 ```bash
