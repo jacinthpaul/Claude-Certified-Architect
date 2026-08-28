@@ -73,11 +73,14 @@ PRACTICE = [
            "accurate but generic 600-word summary that is useless for their 5-minute "
            "leadership briefing. What is the most effective revision?",
          options={
-             "A": "State the audience, purpose, focus areas, length, and format in the prompt "
-                  "(e.g., '5 bullets for the COO, focused on risks and renewal impact').",
-             "B": "Ask Claude to 'be more detailed and professional' and regenerate.",
-             "C": "Run the same prompt several times and combine the best parts of each summary.",
-             "D": "Switch to a more capable model, since the summary quality was too low.",
+             "A": "State audience, purpose, focus, length, and format — '5 bullets for the "
+                  "COO, on risks.'",
+             "B": "Ask Claude to 'be more detailed and professional' and regenerate the "
+                  "summary again.",
+             "C": "Run the same prompt several times and combine the best parts of each "
+                  "summary.",
+             "D": "Switch to a more capable model, since the summary quality was clearly "
+                  "too low.",
          },
          answer="A",
          why="The output was generic because the requirements — audience, purpose, focus, "
@@ -89,14 +92,14 @@ PRACTICE = [
            "migration: risks, timeline, and comms plan. What is the most reliable way to get "
            "a high-quality result from Claude?",
          options={
-             "A": "Write one very detailed prompt requesting all three deliverables at once "
-                  "so nothing is lost between steps.",
-             "B": "Break the work into sequenced steps (risks, then timeline, then comms plan), "
-                  "reviewing each output before it feeds the next step.",
-             "C": "Ask for all three deliverables in one prompt, then regenerate until the "
+             "A": "Write one very detailed prompt requesting all three deliverables at "
+                  "once, so nothing is lost.",
+             "B": "Sequence the steps — risks, then timeline, then comms — reviewing each "
+                  "output.",
+             "C": "Ask for all three in one prompt, then regenerate repeatedly until the "
                   "combined output looks right.",
              "D": "Chain the three prompts automatically so each output flows into the next "
-                  "without interruption.",
+                  "without a pause.",
          },
          answer="B",
          why="Complex deliverables degrade in single mega-prompts, and errors in early parts "
@@ -109,11 +112,14 @@ PRACTICE = [
            "a completely different draft — losing the structure that worked. What should "
            "they have done instead?",
          options={
-             "A": "Give anchored, directional feedback: keep the structure, halve the length, "
-                  "change the tone to acknowledge the unpopular change, and say why.",
-             "B": "Start a new chat and rewrite the original prompt from scratch.",
-             "C": "Regenerate several drafts and pick the best one.",
-             "D": "Accept the first draft and edit it manually, since iteration changes too much.",
+             "A": "Anchored feedback: keep the structure, halve the length, shift the tone; "
+                  "say why.",
+             "B": "Start a fresh chat and rewrite the original prompt from scratch, with "
+                  "much more detail.",
+             "C": "Regenerate several drafts from the same prompt and pick whichever one of "
+                  "them reads best.",
+             "D": "Accept the first draft and edit it by hand, since iteration changes too "
+                  "much.",
          },
          answer="A",
          why="Effective iteration names what to keep and what to change, with direction. "
@@ -125,12 +131,14 @@ PRACTICE = [
            "the best way to improve our onboarding process?' — getting one safe, generic "
            "recommendation. What went wrong?",
          options={
-             "A": "The model is too small for creative work; a more capable model would list "
+             "A": "The model is too small for creative work; a more capable one would list "
                   "more options.",
-             "B": "The prompt used an analysis shape for a brainstorming task; asking for many "
-                  "unfiltered, diverse ideas with judgment deferred would fit the task type.",
-             "C": "Nothing — a single best-practice answer is the correct output for this request.",
-             "D": "The prompt was too short; adding company background would produce more ideas.",
+             "B": "The prompt used an analysis shape for a brainstorming task; ask for many "
+                  "diverse ideas.",
+             "C": "Nothing — a single best-practice answer is the correct output for this "
+                  "request.",
+             "D": "The prompt was too short; adding company background would have produced "
+                  "more ideas.",
          },
          answer="B",
          why="Brainstorming needs divergent prompting — quantity, variety, no premature "
@@ -143,11 +151,14 @@ PRACTICE = [
          q="Claude produces a fluent, well-formatted summary of a quarterly spreadsheet for a "
            "team update. What is the most appropriate evaluation before using it?",
          options={
-             "A": "Check that the tone and formatting are appropriate for the team audience.",
-             "B": "Verify each figure against the source spreadsheet AND check the summary "
-                  "covers everything the request asked for, including what it silently omitted.",
-             "C": "Ask Claude whether it is confident in the summary and proceed if it says yes.",
-             "D": "Have Claude regenerate the summary and compare whether the two versions agree.",
+             "A": "Check that the tone and formatting are appropriate for the team "
+                  "audience.",
+             "B": "Verify each figure against the spreadsheet and check the summary covers "
+                  "the request.",
+             "C": "Ask Claude whether it is confident in the summary, and proceed on the "
+                  "strength of that.",
+             "D": "Have Claude regenerate the summary and compare whether the two versions "
+                  "agree closely.",
          },
          answer="B",
          why="Evaluation is two questions: is what's present accurate (check against the "
@@ -159,12 +170,14 @@ PRACTICE = [
            "mid-market firms adopted AI assistants.' The associate has never seen this study. "
            "What is the appropriate response to this level of specificity?",
          options={
-             "A": "Treat the specificity as a credibility signal — invented numbers are rarely "
-                  "that precise.",
-             "B": "Treat the specific citation as a checkable claim that could be fabricated, "
-                  "and verify the study exists and says this before using it.",
-             "C": "Round the number to 'about 70%' so the claim is safer to publish.",
-             "D": "Ask Claude to confirm the source, and keep the claim if it provides details.",
+             "A": "Treat the specificity as a credibility signal — invented numbers are "
+                  "rarely that precise.",
+             "B": "Treat the citation as a checkable claim: verify the study exists and "
+                  "says this.",
+             "C": "Round the number to 'about 70%', so the claim is safer to publish "
+                  "without a source.",
+             "D": "Ask Claude to confirm the source, and keep the claim if it provides "
+                  "further details.",
          },
          answer="B",
          why="Hallucinated details are dangerous precisely because they are specific and "
@@ -176,12 +189,14 @@ PRACTICE = [
            "contract. The draft looks excellent and the deal closes tomorrow, but Legal's "
            "review queue is a week long. What should the associate do?",
          options={
-             "A": "Send the clause — it was refined over several careful iterations with Claude.",
-             "B": "Get a qualified human review anyway (e.g., flag a one-clause expedited review "
-                  "or use pre-approved fallback language) — contract terms are a mandatory "
-                  "review category regardless of how good the draft looks.",
-             "C": "Ask Claude to double-check the clause against common legal standards, then send.",
-             "D": "Remove the clause from the contract so no review is needed.",
+             "A": "Send the clause — it was refined over several careful iterations with "
+                  "Claude already.",
+             "B": "Get qualified human review anyway: contract terms are a mandatory review "
+                  "category.",
+             "C": "Ask Claude to double-check the clause against common legal standards, "
+                  "and then send.",
+             "D": "Remove the clause from the contract entirely so that no review is "
+                  "needed.",
          },
          answer="B",
          why="Binding, external, irreversible content — contracts, legal, regulated "
@@ -195,12 +210,14 @@ PRACTICE = [
            "customer data was affected' — a claim the postmortem never addresses. What does "
            "this illustrate?",
          options={
-             "A": "Audience adaptation may change depth and framing but must never add claims "
-                  "the source doesn't support — unsourced additions get verified or removed.",
-             "B": "Customer communications should always include reassurance, so the addition "
-                  "is appropriate.",
-             "C": "The three versions should be merged into one document to avoid inconsistencies.",
-             "D": "Technical content should not be adapted for non-technical audiences.",
+             "A": "Adaptation may change depth and framing, but never add claims the source "
+                  "lacks.",
+             "B": "Customer communications should always include reassurance, so the "
+                  "addition fits.",
+             "C": "The three versions should be merged into one document to avoid "
+                  "inconsistencies.",
+             "D": "Technical content should not be adapted for non-technical audiences at "
+                  "all.",
          },
          answer="A",
          why="Adapting for an audience means translating the same facts, not inventing "
@@ -212,11 +229,10 @@ PRACTICE = [
            "paragraphs of prose. The comparison will be imported into a tracking sheet and "
            "updated after each demo call. What should the analyst request?",
          options={
-             "A": "A shorter prose summary that is easier to skim.",
-             "B": "A criteria-by-vendor table plus a CSV version for the sheet, maintained as "
-                  "an artifact since it will be updated and shared.",
-             "C": "The same prose but with bold headings for each vendor.",
-             "D": "A separate chat for each vendor to keep the details organized.",
+             "A": "A shorter prose summary that is easier for the team to skim quickly.",
+             "B": "A criteria-by-vendor table plus a CSV, kept as an artifact for updating.",
+             "C": "The same prose, but with bold headings introducing each of the vendors.",
+             "D": "A separate chat for each vendor, to keep the details cleanly organized.",
          },
          answer="B",
          why="Format follows downstream use: comparison → table; import → structured data "
@@ -231,11 +247,14 @@ PRACTICE = [
            "update to reflect this week's competitor announcements. Which feature combination "
            "fits?",
          options={
-             "A": "A saved mega-prompt containing all the context, pasted into each new chat.",
-             "B": "A Project holding the durable context as instructions and knowledge, with "
-                  "research mode used in-Project for current announcements.",
-             "C": "One continuous chat that accumulates all the context and all the weekly updates.",
-             "D": "Research mode alone, since current information is the priority.",
+             "A": "A saved mega-prompt containing all the context, pasted into each new "
+                  "chat.",
+             "B": "A Project holding the durable context, with research mode used inside "
+                  "it.",
+             "C": "One continuous chat that accumulates the context and all the weekly "
+                  "updates.",
+             "D": "Research mode alone, since current information is the priority every "
+                  "week.",
          },
          answer="B",
          why="Recurring context belongs in a Project (instructions + knowledge, set once); "
@@ -247,11 +266,14 @@ PRACTICE = [
            "human-reviewed tickets per day, and a quarterly root-cause analysis of six months "
            "of escalation data for executives. How should models be assigned?",
          options={
-             "A": "The most capable model for both — support quality should never be compromised.",
-             "B": "A fast, economical model for the high-volume reviewed drafts; the most "
-                  "capable model for the complex quarterly analysis.",
-             "C": "The economical model for both, since the reviewed drafts prove it is adequate.",
-             "D": "A mid-tier model for both, as a compromise between the two needs.",
+             "A": "The most capable model for both — support quality should never be "
+                  "compromised.",
+             "B": "A fast, economical model for the reviewed drafts; the capable one for "
+                  "analysis.",
+             "C": "The economical model for both, since the reviewed drafts prove it is "
+                  "adequate.",
+             "D": "A mid-tier model for both, as a compromise between the two workloads' "
+                  "needs.",
          },
          answer="B",
          why="Model families trade capability against speed and cost. High-volume, "
@@ -263,11 +285,14 @@ PRACTICE = [
            "wrong walk-away price — a constraint set on day one. Quality has been degrading "
            "for days. What is the appropriate fix?",
          options={
-             "A": "Retype the walk-away price into the same chat, in capital letters, and continue.",
-             "B": "Summarize the durable decisions and constraints, persist them in Project "
-                  "instructions/knowledge, and continue the work in fresh chats.",
-             "C": "Report the model as faulty and switch tools for the negotiation.",
-             "D": "Scroll up and quote the original message so Claude can see it again.",
+             "A": "Retype the walk-away price into the same chat, in capital letters, and "
+                  "carry on.",
+             "B": "Summarize the constraints into Project knowledge and continue in fresh "
+                  "chats.",
+             "C": "Report the model as faulty and switch tools for the rest of the "
+                  "negotiation.",
+             "D": "Scroll up and quote the original message so that Claude can see it "
+                  "again.",
          },
          answer="B",
          why="Long conversations exceed the effective context window: early details drop out "
@@ -280,12 +305,14 @@ PRACTICE = [
          q="Leadership sends a one-line request: 'We need an AI chatbot for HR.' What is the "
            "most valuable first use of Claude?",
          options={
-             "A": "Draft the full project plan immediately so leadership sees fast progress.",
-             "B": "Use Claude to surface the unanswered requirements — users, top tasks, "
-                  "governance boundaries, success metrics — and draft acceptance criteria to "
-                  "validate with the requesters.",
-             "C": "Research which chatbot vendor has the best reviews.",
-             "D": "Build a prototype in a Project so stakeholders have something concrete to react to.",
+             "A": "Draft the full project plan immediately, so leadership sees fast "
+                  "progress.",
+             "B": "Surface the unanswered requirements — users, tasks, boundaries, success "
+                  "metrics.",
+             "C": "Research which chatbot vendor has the best reviews and pricing on the "
+                  "market.",
+             "D": "Build a prototype in a Project so stakeholders have something to react "
+                  "to.",
          },
          answer="B",
          why="A plan built on a one-line requirement encodes guesses as commitments. Claude's "
@@ -297,11 +324,13 @@ PRACTICE = [
            "bottleneck analysis. Claude proposes re-ordering steps 4–6, projecting five days "
            "saved. What should happen before the change is adopted?",
          options={
-             "A": "Adopt it — the analysis was based on the official process documentation.",
-             "B": "Validate the proposal with the people who run those steps, since the "
-                  "documented process may omit real dependencies the model cannot see.",
-             "C": "Ask Claude to redo the analysis with a more capable model to be sure.",
-             "D": "Pilot the change secretly to avoid biasing the team's feedback.",
+             "A": "Adopt it — the analysis was based directly on the official process "
+                  "documentation.",
+             "B": "Validate it with the people who run those steps; docs omit real "
+                  "dependencies.",
+             "C": "Ask Claude to redo the analysis on a more capable model, to be "
+                  "completely certain.",
+             "D": "Pilot the change quietly, to avoid biasing the team's feedback on it.",
          },
          answer="B",
          why="Claude reasons from the documented process; reality often contains undocumented "
@@ -312,11 +341,14 @@ PRACTICE = [
          q="A customer success manager asks Claude to fix a slow QBR-prep process. What "
            "engagement pattern best fits solution design work?",
          options={
-             "A": "Ask for the single best solution and implement it across all 40 CSMs.",
-             "B": "Ask for multiple approaches with trade-offs against stated criteria, select "
-                  "one, pilot it with a few CSMs, and iterate the design on pilot feedback.",
-             "C": "Ask Claude to fully automate the process end-to-end so design is unnecessary.",
-             "D": "Collect solutions from other companies and pick the most common one.",
+             "A": "Ask for the single best solution and roll it out across all 40 CSMs at "
+                  "once.",
+             "B": "Ask for options with trade-offs against criteria, then pilot the chosen "
+                  "one.",
+             "C": "Ask Claude to automate the process end-to-end so design work is "
+                  "unnecessary.",
+             "D": "Collect solutions from other companies and adopt whichever is most "
+                  "common.",
          },
          answer="B",
          why="Solution design is an arc — options with trade-offs, selection against criteria, "
@@ -327,12 +359,14 @@ PRACTICE = [
          q="A recruiting lead wants Claude in the hiring pipeline. Which placement follows "
            "sound workflow-integration principles?",
          options={
-             "A": "Claude ranks all 200 applicants per role so recruiters only interview the top ten.",
-             "B": "Claude structures CV facts against the posted requirements and drafts "
-                  "summaries, while recruiters review every rejection and humans make all "
-                  "hiring decisions.",
-             "C": "Claude conducts the initial screening calls via chat to save recruiter time.",
-             "D": "Keep AI out of recruiting entirely, since hiring affects people.",
+             "A": "Claude ranks all 200 applicants per role so recruiters interview the top "
+                  "ten.",
+             "B": "Claude structures CV facts and drafts summaries; recruiters decide every "
+                  "case.",
+             "C": "Claude conducts the initial screening calls by chat, to save recruiter "
+                  "time.",
+             "D": "Keep AI out of recruiting entirely, since hiring decisions affect "
+                  "people.",
          },
          answer="B",
          why="Sound integration augments drudgery (extraction, structuring, drafting) and "
@@ -345,12 +379,14 @@ PRACTICE = [
            "caught fabrication incident, an associate must brief executives — including an "
            "AI skeptic. What is the strongest communication approach?",
          options={
-             "A": "Lead with the time savings and omit the fabrication incident to keep the "
-                  "expansion on track.",
-             "B": "Present measured value with evidence AND the fabrication incident with the "
-                  "safeguard that caught it, framing limitations as operating rules.",
-             "C": "Focus on the underlying technology so executives understand how the model works.",
-             "D": "Let the skeptic present the risks while you present the benefits.",
+             "A": "Lead with the time savings and omit the incident, to keep the expansion "
+                  "on track.",
+             "B": "Present the measured value and the incident with the safeguard that "
+                  "caught it.",
+             "C": "Focus on the underlying technology, so executives understand how the "
+                  "model works.",
+             "D": "Let the skeptic present the risks while you present the benefits and "
+                  "savings.",
          },
          answer="B",
          why="Credible stakeholder communication pairs every value claim with evidence and "
@@ -365,11 +401,12 @@ PRACTICE = [
            "posts into every new chat, and drafts drift as teammates paste older versions. "
            "What is the right fix?",
          options={
-             "A": "Maintain the setup text in a shared doc that everyone pastes from.",
-             "B": "Configure a Project: durable rules as instructions, reference documents as "
-                  "knowledge, so every chat starts briefed and consistent.",
-             "C": "Use one shared team chat so the context only has to be pasted once.",
-             "D": "Write a longer, more detailed prompt template for each content type.",
+             "A": "Maintain the setup text in a shared doc that everyone pastes from each "
+                  "time.",
+             "B": "Configure a Project: durable rules as instructions, documents as "
+                  "knowledge.",
+             "C": "Use one shared team chat, so the context only has to be pasted in once.",
+             "D": "Write a longer, more detailed prompt template for each type of content.",
          },
          answer="B",
          why="Recurring context is what Projects exist for: instructions define how to work, "
@@ -381,11 +418,14 @@ PRACTICE = [
            "changed three weeks ago and reps are quoting stale numbers. Prices change "
            "monthly. What is the best correction?",
          options={
-             "A": "Add an instruction telling Claude to always use the latest prices.",
-             "B": "Replace the upload with a connector scoped to the folder where the live "
-                  "price sheet is maintained, and delete the stale upload.",
-             "C": "Re-upload the current price list and consider the issue resolved.",
-             "D": "Tell reps to verify all prices manually, since AI data cannot be trusted.",
+             "A": "Add an instruction telling Claude to always use the latest published "
+                  "prices.",
+             "B": "Replace the upload with a connector scoped to the live price sheet's "
+                  "folder.",
+             "C": "Re-upload the current price list and consider the problem resolved for "
+                  "now.",
+             "D": "Tell reps to verify every price manually, since AI data cannot be "
+                  "trusted.",
          },
          answer="B",
          why="Uploads are point-in-time snapshots; monthly-changing sources belong behind a "
@@ -398,12 +438,13 @@ PRACTICE = [
            "Try to be consistent with our policies.' Answers vary wildly and once included an "
            "invented refund exception. What makes replacement instructions effective?",
          options={
-             "A": "Adding more adjectives: 'be extremely accurate, very consistent, and highly professional.'",
-             "B": "Specific, testable rules: answer only from Project policy documents, cite "
-                  "the document and section for every answer, escalate named categories, and "
-                  "say 'not covered' rather than infer.",
-             "C": "A much longer document covering every situation agents might encounter.",
-             "D": "Removing instructions entirely and trusting the model's defaults.",
+             "A": "More adjectives: 'be extremely accurate, very consistent, highly "
+                  "professional.'",
+             "B": "Testable rules: answer only from the policy docs, citing the section.",
+             "C": "A much longer document covering every situation the agents might "
+                  "encounter.",
+             "D": "Removing the instructions entirely and trusting the model's own "
+                  "defaults.",
          },
          answer="B",
          why="Instructions work when a stranger could check compliance: answer-only-from-"
@@ -415,12 +456,12 @@ PRACTICE = [
            "outdated warranty terms, obsolete contacts, and superseded section references. "
            "What does this situation call for?",
          options={
-             "A": "A maintenance system: a named owner, event-triggered updates when policies "
-                  "change, a periodic sweep of knowledge and instructions, and visible "
-                  "versioning.",
+             "A": "A maintenance system: named owner, update triggers, and versioning.",
              "B": "A more capable model that is better at recognizing outdated information.",
-             "C": "An instruction telling Claude to warn users its knowledge may be outdated.",
-             "D": "Recreating the Project from scratch each quarter to guarantee freshness.",
+             "C": "An instruction telling Claude to warn users its knowledge may be "
+                  "outdated.",
+             "D": "Recreating the Project from scratch each quarter, to guarantee "
+                  "freshness.",
          },
          answer="A",
          why="Configuration is a living system — knowledge staleness is an ownership and "
@@ -435,12 +476,13 @@ PRACTICE = [
            "insurance claims under $500 to match competitors' payout speed. How should an "
            "associate assess this use case?",
          options={
-             "A": "Approve it — small claims are low-stakes and the volume savings are large.",
-             "B": "Refactor it: Claude triages, checks coverage, and drafts the disposition in "
-                  "seconds, but a licensed adjuster approves each decision — autonomous "
-                  "binding decisions about people's money are not an appropriate AI use case.",
-             "C": "Reject AI involvement in claims entirely.",
-             "D": "Approve it with a disclaimer to claimants that AI processed their claim.",
+             "A": "Approve it — small claims are low-stakes and the volume savings are "
+                  "large.",
+             "B": "Refactor it: Claude triages and drafts, a licensed adjuster approves "
+                  "each.",
+             "C": "Reject any AI involvement in the claims process, at any claim value.",
+             "D": "Approve it with a disclaimer telling claimants that AI processed the "
+                  "claim.",
          },
          answer="B",
          why="Fit is judged on stakes, reversibility, and accountability — binding financial "
@@ -453,12 +495,11 @@ PRACTICE = [
            "The designated reviewer is on leave and the deadline is this week. The draft is "
            "excellent. What should the associate do?",
          options={
-             "A": "Deliver without mentioning the AI assistance — the associate reviewed it "
-                  "personally and quality is high.",
-             "B": "Find a compliant path (covering reviewer, deadline extension, or non-AI "
-                  "preparation), then raise the single-reviewer gap with the policy owner.",
-             "C": "Deliver with a note that review will follow retroactively once the manager returns.",
-             "D": "Use a personal AI account instead, since the policy covers company tools.",
+             "A": "Deliver without mentioning the AI assistance — the associate reviewed "
+                  "it.",
+             "B": "Find a compliant path, then raise the gap with the policy owner.",
+             "C": "Deliver with a note that review will follow once the manager is back.",
+             "D": "Use a personal AI account, since the policy only covers company tools.",
          },
          answer="B",
          why="Policies bind even when inconvenient; the professional move is comply-then-"
@@ -471,11 +512,13 @@ PRACTICE = [
            "almost entirely excludes two historically underbanked zip-code clusters. What is "
            "the appropriate response?",
          options={
-             "A": "Launch anyway — the model only reflects real historical data.",
-             "B": "Halt the launch, rebuild the segmentation on forward-looking behavioral "
-                  "criteria, involve compliance, and document the finding.",
-             "C": "Add the excluded zip codes back manually and launch.",
-             "D": "Launch with a disclosure that segmentation was AI-assisted.",
+             "A": "Launch anyway — the segmentation only reflects real historical approval "
+                  "data.",
+             "B": "Halt the launch, rebuild on forward-looking criteria, and involve "
+                  "compliance.",
+             "C": "Add the excluded zip codes back into the segment manually, then launch.",
+             "D": "Launch with a disclosure that the segmentation was AI-assisted "
+                  "throughout.",
          },
          answer="B",
          why="A model trained on skewed history reproduces the skew with confidence — this "
@@ -490,10 +533,9 @@ PRACTICE = [
            "discusses metrics absent from the attached export. What is the correct "
            "troubleshooting approach?",
          options={
-             "A": "Classify the failure first — here, fabrication filling a context gap "
-                  "(likely a changed export format) — apply a targeted fix, and re-test on "
-                  "the same input.",
-             "B": "Add 'be more accurate, do not hallucinate' to the prompt and continue.",
+             "A": "Classify the failure first, apply a targeted fix, and re-test on the "
+                  "same input.",
+             "B": "Add 'be more accurate, do not hallucinate' to the prompt and carry on.",
              "C": "Re-run the prompt a few times and use the best output each week.",
              "D": "Switch to a different model, since this one has started hallucinating.",
          },
@@ -509,12 +551,11 @@ PRACTICE = [
            "called one proposal 'unusable' with no specifics; exec summaries are praised. "
            "How should the team act?",
          options={
-             "A": "Rebuild the workflow — a VP calling output unusable is a serious signal.",
-             "B": "Prioritize by pattern strength: diagnose the systematic pricing edits "
-                  "first, apply the cheap tone fix, log the unspecific anecdote for follow-up, "
-                  "and change nothing about the praised summaries.",
-             "C": "Address all four signals at once so every stakeholder sees a response.",
-             "D": "Add a disclaimer that drafts may require editing.",
+             "A": "Rebuild the workflow — a VP calling the output unusable is a serious "
+                  "signal.",
+             "B": "Prioritize by pattern strength: the systematic pricing edits come first.",
+             "C": "Address all four signals at once, so every stakeholder sees a response.",
+             "D": "Add a disclaimer to the drafts saying they may still require editing.",
          },
          answer="B",
          why="Feedback is triaged by frequency and impact, not seniority or volume: a 75% "
@@ -526,12 +567,14 @@ PRACTICE = [
            "sequential regional chats per item, and one bilingual reviewer reading everything "
            "— a two-day bottleneck. Which optimization keeps quality while cutting cost?",
          options={
-             "A": "Remove the human review step, since the outputs have been reliable.",
-             "B": "Move durable context into a Project, batch the five regional variants into "
-                  "one structured pass, right-size the model to the task, and refocus the "
-                  "reviewer on AI-flagged risky choices with spot-checks for the rest.",
-             "C": "Upgrade every step to the most capable model so review becomes unnecessary.",
-             "D": "Ask the reviewer to work faster and set a same-day review SLA.",
+             "A": "Remove the human review step, since the outputs have been reliable for "
+                  "months.",
+             "B": "Move context into a Project, batch the five variants, refocus review on "
+                  "risk.",
+             "C": "Upgrade every step to the most capable model so review becomes "
+                  "unnecessary.",
+             "D": "Ask the reviewer to work faster and set a same-day review SLA for all "
+                  "items.",
          },
          answer="B",
          why="Optimization removes redundancy — repeated context, sequential near-duplicate "

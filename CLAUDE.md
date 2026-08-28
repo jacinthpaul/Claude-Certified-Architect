@@ -60,7 +60,8 @@ When asked for an enhancement, first determine the scope — ask if unclear:
 # regenerate a console's data.js after editing its content package
 python3 ui/console/build_data.py             # architect
 python3 ui/console-associate/build_data.py   # associate (validates blueprint
-                                             # coverage/distribution, fails loudly)
+                                             # coverage/distribution and option-
+                                             # length balance, fails loudly)
 
 # repo smoke test (CI runs this on every push)
 python3 run_all.py --check
@@ -69,6 +70,11 @@ python3 run_all.py --check
 Quiz/mock explanations (`why`) must stay **letter-free** ("the correct
 option…", never "option B") — generators shuffle options with a per-question
 seeded order.
+
+Option length must not give the answer away: write the correct option at the
+same length as its distractors (put the reasoning in `why`, not in the option).
+The associate builder fails if the correct option is the longest in more than
+45% of items, or averages more than 1.15x distractor length, in either bank.
 
 To verify a console end-to-end, stage the site and drive it with the local
 Chromium (`/opt/pw-browsers/chromium` in Claude Code remote sessions):
