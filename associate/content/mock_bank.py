@@ -23,15 +23,14 @@ dict(task="1.1", domain="d1",
        "to enterprise customers. Which prompt is most likely to produce a usable draft on "
        "the first attempt?",
      options={
-         "A": "\"Write an announcement about the product delay.\"",
-         "B": "\"Draft a 150-word email to enterprise customers announcing the Q3 release "
-              "moving to November. Tone: candid, no marketing spin. Must include: the new "
-              "date, one-sentence reason (quality bar), what happens to existing "
-              "commitments, and a named contact.\"",
+         "A": "\"Write an announcement about the product delay for our enterprise customers "
+              "— make it sincere, on-brand, and not too corporate.\"",
+         "B": "\"Draft a 150-word candid email to enterprise customers: Q3 release moves to "
+              "November, the reason, impact on commitments, a named contact.\"",
          "C": "\"Write a very professional, high-quality, detailed announcement about the "
-              "product delay. Make sure it is excellent.\"",
-         "D": "\"You are the world's best communications expert. Write an announcement "
-              "about the product delay.\"",
+              "product delay. Tone and accuracy matter enormously, so make it excellent.\"",
+         "D": "\"You are the world's best crisis communications expert with 30 years at "
+              "Fortune 100 companies. Write our product delay announcement.\"",
      },
      answer="B",
      why="The strong prompt supplies audience, length, tone, and the required content "
@@ -45,10 +44,14 @@ dict(task="1.1", domain="d1",
        "content they can drop into a slide. What element is their prompt most likely "
        "missing?",
      options={
-         "A": "An explicit output-format specification (e.g., '5 bullets, max 12 words each').",
-         "B": "A politeness marker, since models respond better to courteous prompts.",
-         "C": "A more capable model selection for business content.",
-         "D": "Longer, more detailed background about the company.",
+         "A": "An explicit output-format specification — for example, '5 bullets, max 12 "
+              "words each.'",
+         "B": "A politeness marker: models are trained on human dialogue and respond better "
+              "to courteous phrasing.",
+         "C": "A more capable model tier, since slide-ready business content demands "
+              "stronger reasoning.",
+         "D": "Longer background about the company, so the model can judge what belongs on "
+              "the slide.",
      },
      answer="A",
      why="Output shape is a prompt element like any other: if the format isn't stated, the "
@@ -61,12 +64,14 @@ dict(task="1.2", domain="d1",
        "the whole document at once yields shallow, partly inconsistent content. What is the "
        "best restructuring of the work?",
      options={
-         "A": "Ask for the document again with 'be thorough and consistent' added.",
-         "B": "Decompose it: outline first, then each section drafted in sequence with the "
-              "consultant reviewing and correcting before the next section builds on it.",
-         "C": "Generate the document five times and merge the strongest chapters.",
-         "D": "Split the document across five parallel chats, one per section, and staple "
-              "the results together.",
+         "A": "Ask for the whole document again, adding 'be thorough and keep it internally "
+              "consistent throughout.'",
+         "B": "Decompose it: outline first, then each section drafted in sequence, reviewed "
+              "before the next builds on it.",
+         "C": "Generate the full document five times and merge the strongest chapters from "
+              "the different runs.",
+         "D": "Split it across five parallel chats, one per section, with the same brief in "
+              "each, and staple the results together.",
      },
      answer="B",
      why="Sequenced decomposition with review between steps keeps each unit verifiable and "
@@ -79,11 +84,10 @@ dict(task="1.2", domain="d1",
      q="While decomposing a complex analysis into steps, an associate wonders when to pause "
        "for their own review of Claude's output. What is the guiding principle?",
      options={
-         "A": "Review only the final combined deliverable to preserve momentum.",
-         "B": "Review after every step whose output feeds the next step — early errors "
-              "compound downstream.",
+         "A": "Review only the final combined deliverable, to preserve momentum.",
+         "B": "Review after every step whose output feeds the next step.",
          "C": "Review is unnecessary if each step's prompt was well-written.",
-         "D": "Review at random intervals so the checking is unbiased.",
+         "D": "Review at random intervals, so the checking stays unbiased.",
      },
      answer="B",
      why="The value of decomposition comes from checkpoints: an unverified early output "
@@ -96,12 +100,14 @@ dict(task="1.3", domain="d1",
      q="Claude's draft of a client FAQ has strong answers but the wrong reading level and "
        "several missing topics. Which follow-up gets the best next iteration?",
      options={
-         "A": "\"This isn't right, try again.\"",
-         "B": "\"Keep all ten answers as written. Rewrite at an 8th-grade reading level, and "
-              "add entries for billing disputes, cancellation, and data export — using the "
-              "attached policy for those three.\"",
-         "C": "\"Make it simpler and more complete.\"",
-         "D": "Start a fresh chat with a longer initial prompt and regenerate from scratch.",
+         "A": "\"This isn't right — try again. I need something a lot closer to what our "
+              "customers actually ask us about.\"",
+         "B": "\"Keep the ten answers. Rewrite at an 8th-grade level; add billing, "
+              "cancellation, and data-export entries from the policy.\"",
+         "C": "\"Make it simpler and more complete — the reading level is too high and "
+              "several topics are still missing entirely.\"",
+         "D": "Start a fresh chat with a much longer, more detailed opening prompt and "
+              "regenerate all ten answers from scratch.",
      },
      answer="B",
      why="Anchored feedback preserves what works, names the specific changes, and supplies "
@@ -116,10 +122,13 @@ dict(task="1.3", domain="d1",
        "pricing. What does this convergence failure signal?",
      options={
          "A": "The prompt is missing information the model cannot invent — supply the "
-              "competitor data instead of re-phrasing the feedback.",
-         "B": "The model has reached its capability ceiling for this task.",
-         "C": "More forceful feedback wording is needed.",
-         "D": "The conversation should be moved to a Project.",
+              "competitor's pricing data.",
+         "B": "The model has hit its capability ceiling here; a more capable tier is the "
+              "only remaining fix.",
+         "C": "The feedback wording is too gentle; firmer, more directive phrasing will "
+              "force convergence.",
+         "D": "The conversation belongs in a Project, whose instructions would keep the "
+              "revisions consistent.",
      },
      answer="A",
      why="When iterations keep guessing at the same detail, the gap is missing input, not "
@@ -133,12 +142,14 @@ dict(task="1.4", domain="d1",
        "current market entrants, write a board memo, and generate campaign concepts. Which "
        "pairing of task and prompting strategy is correct?",
      options={
-         "A": "Vendor scoring → ask for many unfiltered creative options.",
-         "B": "Campaign concepts → request a large number of diverse, unjudged ideas; vendor "
-              "scoring → explicit criteria and a structured comparison.",
-         "C": "Board memo → request maximum idea quantity; market entrants → a single "
-              "polished narrative.",
-         "D": "All four → one combined prompt so the outputs stay consistent.",
+         "A": "Vendor scoring → a large batch of unfiltered creative options; campaign "
+              "concepts → one polished recommendation.",
+         "B": "Campaign concepts → many diverse, unjudged ideas; vendor scoring → explicit "
+              "criteria and a structured table.",
+         "C": "Board memo → maximum idea quantity; market entrants → a single polished "
+              "narrative written from memory.",
+         "D": "All four in one combined prompt, so that the four outputs stay consistent "
+              "with each other.",
      },
      answer="B",
      why="Brainstorming rewards divergence (quantity, variety, deferred judgment) while "
@@ -151,12 +162,14 @@ dict(task="1.4", domain="d1",
      q="An associate researching new privacy legislation for a briefing asks Claude to "
        "'brainstorm what the law probably says.' What is wrong with this approach?",
      options={
-         "A": "Nothing — brainstorming surfaces more possibilities than direct questions.",
-         "B": "Research tasks need grounding in actual sources (documents or research mode) "
-              "and verification — a divergent ideation prompt invites plausible invention "
-              "about checkable facts.",
-         "C": "The prompt should have requested more ideas to improve coverage.",
-         "D": "Legislation can never be discussed with AI tools.",
+         "A": "Nothing — brainstorming surfaces more possibilities than a narrow, direct "
+              "question would.",
+         "B": "Research tasks need real sources and verification; ideation prompts invite "
+              "plausible invention.",
+         "C": "The prompt should have asked for more ideas, since coverage improves with "
+              "the number generated.",
+         "D": "Legislation is a regulated topic, so drafting anything about it with an AI "
+              "tool is prohibited.",
      },
      answer="B",
      why="Task type dictates strategy: legal content is a research task with verifiable "
@@ -172,11 +185,14 @@ dict(task="2.1", domain="d2",
        "smoothly and matches everything the associate remembers about the deal. Before the "
        "summary informs a renewal decision, what evaluation is required?",
      options={
-         "A": "None — it matches the associate's recollection of the contract.",
-         "B": "Check key claims (terms, dates, obligations) against the contract text and "
-              "confirm the summary covers the sections the renewal decision depends on.",
-         "C": "Ask Claude to re-read the contract and confirm its own summary.",
-         "D": "Compare its length against summaries of similar contracts.",
+         "A": "None needed — it matches the associate's own recollection of how the deal "
+              "was negotiated.",
+         "B": "Check key terms and dates against the contract, and confirm it covers the "
+              "sections the decision needs.",
+         "C": "Ask Claude to re-read the contract and confirm its own summary is accurate "
+              "and complete.",
+         "D": "Compare its length and structure against summaries of similar vendor "
+              "contracts from last year.",
      },
      answer="B",
      why="Memory and fluency are weak evaluators; decisions need claims verified against "
@@ -190,11 +206,13 @@ dict(task="2.1", domain="d2",
        "six well-explained risks. The most reliable way to catch what the response MISSED "
        "is to:",
      options={
-         "A": "Re-read the proposal against the response, checking each section for risk "
-              "content the six items don't cover.",
-         "B": "Count whether six risks is typical for proposals of this size.",
-         "C": "Check that each of the six risks is well-reasoned.",
-         "D": "Ask Claude if it is confident the list is complete.",
+         "A": "Re-read the proposal, checking each section for risks the six items miss.",
+         "B": "Check whether six risks is a typical number for supplier proposals of this "
+              "size and complexity.",
+         "C": "Check that each of the six risks is well-reasoned and clearly explained in "
+              "the response.",
+         "D": "Ask Claude whether its list is complete and whether it left anything "
+              "material out.",
      },
      answer="A",
      why="Completeness failures are invisible from inside the output — they're found by "
@@ -208,11 +226,14 @@ dict(task="2.2", domain="d2",
        "47' for a key statistic. The associate cannot find this report anywhere. What has "
        "most likely happened?",
      options={
-         "A": "The report exists but is behind a paywall, so the citation should stand.",
-         "B": "The model fabricated a plausible-looking citation — a hallucination — and the "
-              "statistic needs a real, verified source or removal.",
-         "C": "The model accessed a private database unavailable to the associate.",
-         "D": "The page number is wrong but the statistic is trustworthy.",
+         "A": "The report is probably paywalled or client-only, so the citation can stand "
+              "and the statistic holds.",
+         "B": "The model fabricated a plausible citation; the statistic needs a real "
+              "source.",
+         "C": "The model drew on a licensed database that the associate's account cannot "
+              "reach.",
+         "D": "The page number is slightly wrong, but the statistic itself is still "
+              "trustworthy.",
      },
      answer="B",
      why="Invented citations with realistic titles and page numbers are a classic "
@@ -226,11 +247,13 @@ dict(task="2.2", domain="d2",
        "from $2.1M to $1.6M with no explanation. What kind of defect is this, and what does "
        "it require?",
      options={
-         "A": "A rounding convention — pick either number.",
-         "B": "An internal inconsistency — trace both figures to the underlying data to "
-              "determine which (if either) is right before the report is used.",
-         "C": "A hallucinated citation — delete both figures.",
-         "D": "Expected model behavior in long outputs — no action needed.",
+         "A": "A rounding or presentation convention — pick whichever figure reads better "
+              "and use it throughout.",
+         "B": "An internal inconsistency: trace both figures to the source data before the "
+              "report is used.",
+         "C": "A hallucinated citation — remove both figures and the surrounding paragraph.",
+         "D": "Expected behavior in long outputs, where figures drift over length; no "
+              "action is needed here.",
      },
      answer="B",
      why="Contradictory figures within one output are an inconsistency defect: at least one "
@@ -243,11 +266,14 @@ dict(task="2.2", domain="d2",
        "and the criteria heavily favor traits of the current team's demographic majority. "
        "What should the associate recognize?",
      options={
-         "A": "The criteria are objective because they came from performance data.",
-         "B": "The output may encode bias inherited from a skewed sample — the criteria need "
-              "review against the actual job requirements before any use.",
-         "C": "The model is malfunctioning and should be reported.",
-         "D": "Adding more best-performer profiles will balance the criteria.",
+         "A": "The criteria are objective, since they were derived from the team's real "
+              "performance data.",
+         "B": "The output may encode bias from a skewed sample; check it against the job "
+              "spec.",
+         "C": "The model is malfunctioning and the behavior should be reported to the "
+              "vendor's support.",
+         "D": "Adding more of the team's best-performer profiles to the sample will balance "
+              "the criteria out.",
      },
      answer="B",
      why="Bias in outputs often arrives via bias in inputs: a homogeneous 'best performer' "
@@ -261,11 +287,14 @@ dict(task="2.3", domain="d2",
        "feature, (b) a computed market-share percentage, and (c) a quoted line from a CEO "
        "interview. Which validation mapping is correct?",
      options={
-         "A": "(a) press release or product page; (b) recompute from the underlying figures; "
-              "(c) locate the original interview.",
-         "B": "All three: ask Claude to double-check its work in the same chat.",
-         "C": "(a) and (c) need no validation; (b) should be rounded for safety.",
-         "D": "All three: accept if at least two other AI tools agree.",
+         "A": "(a) the competitor's press release; (b) recompute the figure; (c) find the "
+              "original interview.",
+         "B": "All three: ask Claude to double-check its own work before the brief "
+              "circulates.",
+         "C": "(a) and (c) need no validation; (b) should be rounded to a safe range before "
+              "publication.",
+         "D": "All three: accept any claim that at least two other AI assistants "
+              "independently agree with.",
      },
      answer="A",
      why="Validation technique follows claim type: product claims trace to the company's "
@@ -278,11 +307,14 @@ dict(task="2.3", domain="d2",
      q="An associate has 20 Claude-generated claims to validate before a deadline and "
        "cannot deep-verify all of them. How should validation effort be allocated?",
      options={
-         "A": "Equal time per claim, for consistency.",
-         "B": "By stakes: deep-verify the claims the decision or audience most depends on "
-              "(regulatory, financial, external-facing); spot-check the low-consequence rest.",
-         "C": "Validate the ten easiest claims fully and note the rest as unverified.",
-         "D": "Skip validation this once and add a general disclaimer.",
+         "A": "Give every claim equal time, so the validation effort stays consistent and "
+              "defensible in an audit.",
+         "B": "By stakes: deep-verify what the decision rests on, spot-check the "
+              "low-consequence rest.",
+         "C": "Fully validate the ten easiest claims and flag the remaining ten as "
+              "unverified.",
+         "D": "Skip validation this once and add a general disclaimer about AI-assisted "
+              "content to the deck.",
      },
      answer="B",
      why="Validation depth scales with the cost of being wrong. Stakes-based triage puts "
@@ -296,11 +328,14 @@ dict(task="2.3", domain="d2",
        "'Are you sure this is correct?' and receives 'Yes — this reflects the current "
        "rule.' What has the associate learned?",
      options={
-         "A": "The summary is validated and safe to circulate.",
-         "B": "Essentially nothing — models often reaffirm their own errors fluently; the "
-              "rule text itself (or a qualified reviewer) is the validation source.",
-         "C": "The summary is now MORE likely correct because it survived a challenge.",
-         "D": "The summary is wrong, since honest models express doubt when challenged.",
+         "A": "The summary is validated: the model checked its own work and confirmed it is "
+              "correct.",
+         "B": "Essentially nothing — models reaffirm their own errors; the rule text is the "
+              "check.",
+         "C": "The summary is now more likely correct, since a wrong answer wouldn't "
+              "survive a challenge.",
+         "D": "The summary is probably wrong, since an honest model expresses doubt when "
+              "challenged.",
      },
      answer="B",
      why="Asking the generator to grade itself re-samples the process that produced any "
@@ -313,10 +348,12 @@ dict(task="2.4", domain="d2",
      q="Which of these Claude outputs can an associate reasonably use after self-review "
        "alone, without routing to a qualified human reviewer?",
      options={
-         "A": "A severance-terms explanation to be sent to a departing employee.",
-         "B": "An internal first-draft agenda and discussion notes for the team's weekly sync.",
-         "C": "A public statement responding to a customer data-breach rumor.",
-         "D": "Dosage-related wording for a medical device's user leaflet.",
+         "A": "A written explanation of severance terms to be sent to a departing employee "
+              "this week.",
+         "B": "A first-draft agenda and notes for the team's internal weekly sync.",
+         "C": "A public statement responding to a customer's rumor about a data breach at "
+              "the company.",
+         "D": "Dosage-related wording for the user leaflet of a home medical device.",
      },
      answer="B",
      why="Review triggers are categorical: personnel/legal terms, public crisis statements, "
@@ -330,11 +367,13 @@ dict(task="2.4", domain="d2",
        "the legal team 'to be safe.' Legal now rubber-stamps the queue. What has the team "
        "gotten wrong about human review?",
      options={
-         "A": "Nothing — maximum review is maximum safety.",
-         "B": "Review must be calibrated to risk categories: flooding reviewers with trivial "
-              "items degrades scrutiny of the few outputs where review actually matters.",
-         "C": "Legal review should be replaced with a second AI model's review.",
-         "D": "Reviews should be sampled randomly at 10% regardless of content.",
+         "A": "Nothing is wrong — routing every output through legal is the maximally safe "
+              "posture.",
+         "B": "Review must track risk: flooding reviewers with trivia degrades scrutiny.",
+         "C": "Legal review should be replaced by a second model reviewing the first "
+              "model's output.",
+         "D": "Reviews should be sampled at random, 10% of outputs, regardless of what they "
+              "contain.",
      },
      answer="B",
      why="Indiscriminate review is a failure mode, not a safety posture: reviewer attention "
@@ -347,12 +386,14 @@ dict(task="2.5", domain="d2",
      q="An associate must deliver quarterly results to the board and to the engineering "
        "all-hands. Claude produced one competent document. What is the right next step?",
      options={
-         "A": "Send it to both audiences — the facts don't change.",
-         "B": "Generate audience-specific variants: decision- and impact-focused for the "
-              "board; specifics and team-relevant detail for engineering — same facts, "
-              "different depth and framing.",
-         "C": "Send the board a shortened copy with the technical paragraphs deleted.",
-         "D": "Send engineering the board version plus a glossary.",
+         "A": "Send the same document to both audiences — the underlying facts don't change "
+              "with the reader.",
+         "B": "Generate two variants: decisions and impact for the board, specifics for "
+              "engineering.",
+         "C": "Send the board a shortened copy with the technical paragraphs deleted from "
+              "the middle.",
+         "D": "Send engineering the board version with a glossary of the business terms "
+              "appended.",
      },
      answer="B",
      why="Adaptation is translation for what each audience must do with the information, "
@@ -366,11 +407,14 @@ dict(task="2.6", domain="d2",
        "chat, and separately for a 30-criteria security-questionnaire response matrix that "
        "three teams will fill in over two weeks. Which format pairing is right?",
      options={
-         "A": "Definition → inline chat answer; questionnaire matrix → structured "
-              "table/artifact the teams can work in and update.",
-         "B": "Both inline — chat keeps everything in one place.",
-         "C": "Both as artifacts — artifacts look more professional.",
-         "D": "Definition → table; matrix → prose so it reads naturally.",
+         "A": "Definition → an inline chat answer; matrix → a structured artifact the teams "
+              "update.",
+         "B": "Both inline in chat, so the whole thread stays in one searchable place for "
+              "everyone.",
+         "C": "Both as artifacts, since artifacts are more professional and easier to "
+              "share.",
+         "D": "Definition → a table for precision; matrix → prose so it reads more "
+              "naturally.",
      },
      answer="A",
      why="Downstream use picks the format: a conversational fact needs an inline sentence; "
@@ -384,11 +428,13 @@ dict(task="2.6", domain="d2",
        "audience needs to act on it in a review meeting. What curation should the associate "
        "request?",
      options={
-         "A": "None — the content is complete, and meetings can work through prose.",
-         "B": "Group items by category, rank by severity within groups, put the top five in "
-              "a summary table, and move the long tail to an appendix.",
-         "C": "Cut the assessment to five items so it fits one slide.",
-         "D": "Convert every item into its own table for consistency.",
+         "A": "None — the content is complete, and the meeting can work through the prose "
+              "together.",
+         "B": "Group by category, rank by severity, put the top five in a table, appendix "
+              "the rest.",
+         "C": "Cut the assessment down to the five most severe items so that it fits on a "
+              "single slide.",
+         "D": "Convert every one of the 25 items into its own small table, for consistency.",
      },
      answer="B",
      why="Curation — grouping, ranking, surfacing the actionable few while preserving the "
@@ -404,11 +450,14 @@ dict(task="3.1", domain="d3",
        "templates, and today also needs current statistics on a fast-moving regulation. "
        "Which product-feature setup fits?",
      options={
-         "A": "A Project containing the methodology decks and templates, with research mode "
-              "used inside it when current sourced facts are needed.",
-         "B": "Research mode for everything, since it is the most powerful feature.",
-         "C": "A plain chat with the decks re-uploaded whenever they seem relevant.",
-         "D": "An artifact containing all the methodology content, referenced in each chat.",
+         "A": "A Project holding the decks and templates, with research mode used in it for "
+              "current facts.",
+         "B": "Research mode for every question, since it is the most capable feature "
+              "available to the team.",
+         "C": "A plain chat, with the methodology decks re-uploaded whenever they seem "
+              "relevant to a question.",
+         "D": "An artifact containing the methodology content, pasted as a reference into "
+              "each new chat.",
      },
      answer="A",
      why="Durable recurring context belongs in Project knowledge and instructions; live "
@@ -422,11 +471,11 @@ dict(task="3.1", domain="d3",
        "rounds in our industry' and gets a detailed, dated list. How should they treat this "
        "output?",
      options={
-         "A": "As current — the entries carry specific dates and amounts.",
-         "B": "As unreliable for recency: training data has a cutoff, so 'this quarter' "
-              "claims need research mode (or manual sources) with verified citations.",
-         "C": "As current, provided the chat began today.",
-         "D": "As reliable after asking the model to confirm the list is up to date.",
+         "A": "As current — the entries carry specific dates, amounts, and named investors.",
+         "B": "As unreliable for recency: training data has a cutoff — use research mode.",
+         "C": "As current, provided the chat was started today and the question explicitly "
+              "named this quarter.",
+         "D": "As reliable, once the model has confirmed the list is up to date when asked.",
      },
      answer="B",
      why="A model without live research answers recency questions from training data and "
@@ -438,12 +487,14 @@ dict(task="3.1", domain="d3",
 dict(task="3.2", domain="d3",
      q="Which task assignment correctly matches Claude model tiers to workloads?",
      options={
-         "A": "Haiku for a nuanced multi-document legal risk analysis; Opus for tagging "
-              "10,000 support tickets.",
-         "B": "Haiku for tagging 10,000 support tickets; Sonnet for everyday report "
-              "drafting; Opus for the nuanced multi-document legal risk analysis.",
-         "C": "Opus for everything, to standardize on one model.",
-         "D": "Sonnet for everything, since it balances all trade-offs.",
+         "A": "Haiku for the nuanced multi-document legal risk analysis; Opus for tagging "
+              "the 10,000 tickets.",
+         "B": "Haiku for tagging 10,000 tickets; Sonnet for report drafting; Opus for the "
+              "legal analysis.",
+         "C": "Opus for all three, to standardize the team on one model and simplify "
+              "support and billing.",
+         "D": "Sonnet for all three, since it balances capability, cost, and latency for "
+              "any workload.",
      },
      answer="B",
      why="Capability should follow task complexity: high-volume classification fits the "
@@ -458,13 +509,14 @@ dict(task="3.2", domain="d3",
        "capable one; compute is cheap.' For a 50,000-call/month automated workflow, what is "
        "the strongest counterpoint?",
      options={
-         "A": "At volume, per-call cost and latency multiply: paying top-tier prices for "
-              "work a faster tier handles adequately burns budget and slows every "
-              "interaction, without a quality benefit the workflow's review step doesn't "
-              "already provide.",
-         "B": "More capable models are actually less accurate on simple tasks.",
-         "C": "The most capable model should be reserved for executives' use.",
-         "D": "There is no counterpoint — maximum capability is always the safe default.",
+         "A": "At 50,000 calls a month, per-call cost and latency multiply with no matching "
+              "quality gain.",
+         "B": "More capable models are measurably less accurate on simple classification "
+              "work.",
+         "C": "The most capable model should be reserved for executive and customer-facing "
+              "work only.",
+         "D": "There is no counterpoint; maximum capability is always the safe default at "
+              "any volume.",
      },
      answer="A",
      why="The trade-off is real at scale: cost and latency are per-call taxes multiplied "
@@ -478,12 +530,14 @@ dict(task="3.3", domain="d3",
        "invoices daily, with a clerk spot-checking 10%. What is the soundest selection "
        "process?",
      options={
-         "A": "Start with the most capable model and downgrade if the budget complains.",
-         "B": "State the requirements (volume, latency ceiling, accuracy floor given the "
-              "spot-check net), pilot the most economical plausible model against them, and "
-              "step up only where measured accuracy misses the bar.",
-         "C": "Use the mid-tier model — it's a safe compromise for any task.",
-         "D": "Survey which model other companies use for invoices.",
+         "A": "Start with the most capable model and step down only when the budget owner "
+              "complains about spend.",
+         "B": "State volume, latency, and accuracy requirements; pilot the cheapest model "
+              "that could meet them.",
+         "C": "Use the mid-tier model — it is a safe compromise for essentially any "
+              "extraction task.",
+         "D": "Survey which models other companies use for invoice extraction and match "
+              "their choice.",
      },
      answer="B",
      why="Requirements first, then the cheapest model that clears them, verified by "
@@ -497,11 +551,13 @@ dict(task="3.4", domain="d3",
        "misses constraints set early in the conversation, and recently contradicted an "
        "agreed decision. What is happening and what fixes it?",
      options={
-         "A": "The model was updated mid-project; wait for the next update.",
-         "B": "The conversation is exceeding its practical context window; summarize the "
-              "durable decisions, persist them in a Project, and continue in fresh chats.",
-         "C": "The prompts have become too polite; firmer language restores compliance.",
-         "D": "Nothing is wrong; contradictions are normal model variance to be corrected "
+         "A": "The model was updated mid-project, so its behavior changed; wait for the "
+              "next release to settle.",
+         "B": "The chat exceeds its practical context window; summarize into a Project and "
+              "restart.",
+         "C": "The prompts have grown too polite; firmer, more directive language restores "
+              "compliance.",
+         "D": "Nothing is wrong — contradictions are normal variance and can be corrected "
               "case by case.",
      },
      answer="B",
@@ -515,12 +571,14 @@ dict(task="3.4", domain="d3",
      q="Before closing a long analysis chat for the week, what habit best preserves the "
        "work for future sessions?",
      options={
-         "A": "Ask Claude for a structured summary of decisions, constraints, open items, "
-              "and next steps — and save it where future chats can use it (e.g., Project "
-              "knowledge or the team's docs).",
-         "B": "Keep the chat open in a browser tab so the context stays warm.",
-         "C": "Nothing — the conversation history is the permanent record.",
-         "D": "Copy the entire transcript into the start of next week's chat.",
+         "A": "Ask for a structured summary of decisions and next steps, saved into Project "
+              "knowledge.",
+         "B": "Keep the chat open in a browser tab so that its context stays warm for next "
+              "week's session.",
+         "C": "Nothing — the conversation history is a permanent record you can scroll back "
+              "through.",
+         "D": "Copy the whole transcript into the first message of next week's chat to "
+              "restore context.",
      },
      answer="A",
      why="A chat is a workspace, not a filing cabinet: durable context survives through "
@@ -535,12 +593,14 @@ dict(task="4.1", domain="d4",
      q="A director asks an associate to 'get Claude to modernize our reporting.' Before any "
        "building, which use of Claude delivers the most value?",
      options={
-         "A": "Generating a modern report template to show quick progress.",
-         "B": "Analyzing the request: current reports and their consumers, pain points, "
-              "constraints, and drafting testable success criteria to confirm with the "
-              "director.",
-         "C": "Researching reporting-tool vendors and their pricing.",
-         "D": "Rebuilding last quarter's report in a new format as a demo.",
+         "A": "Generate a modern report template right away, so the director sees quick, "
+              "visible progress.",
+         "B": "Analyze the request first: current reports, consumers, pain points, and "
+              "success criteria.",
+         "C": "Research reporting-tool vendors and their pricing so the options are on the "
+              "table early.",
+         "D": "Rebuild last quarter's report in a new format as a demo of what modern could "
+              "mean.",
      },
      answer="B",
      why="'Modernize' is an unexamined requirement — building against it encodes guesses. "
@@ -554,11 +614,14 @@ dict(task="4.1", domain="d4",
        "with the CRM.' Nobody has actually said this. How should the associate handle "
        "Claude's inferred requirement?",
      options={
-         "A": "Include it in the plan — the inference is reasonable.",
-         "B": "Treat it as a candidate requirement to validate with the actual stakeholders "
-              "before it becomes a commitment.",
-         "C": "Discard it — models should not propose requirements.",
-         "D": "Ask Claude to rate its confidence in the inference and include it above 80%.",
+         "A": "Include it in the plan — the inference is reasonable and CRM integration is "
+              "common.",
+         "B": "Treat it as a candidate requirement and validate it with stakeholders before "
+              "committing.",
+         "C": "Discard it outright — a model should never propose requirements no "
+              "stakeholder asked for.",
+         "D": "Ask Claude to rate its confidence and include the requirement if it exceeds "
+              "80%.",
      },
      answer="B",
      why="Claude's analytical value is surfacing candidate requirements humans might miss — "
@@ -571,12 +634,14 @@ dict(task="4.2", domain="d4",
      q="An associate wants Claude's help optimizing the invoice-approval process. Which "
        "input to Claude produces the most actionable optimization analysis?",
      options={
-         "A": "\"Our invoice process is slow. How do companies usually speed this up?\"",
-         "B": "The documented process — steps, owners, durations, volumes, exception rates — "
-              "with a request to identify bottlenecks, redundancies, and automation "
-              "candidates ranked by expected impact.",
-         "C": "\"List the top ten process-optimization frameworks.\"",
-         "D": "The org chart, so Claude understands who is involved.",
+         "A": "\"Our invoice process is slow. How do most companies usually speed this "
+              "up?\"",
+         "B": "The documented process — steps, owners, durations, volumes — with a request "
+              "to rank fixes.",
+         "C": "\"List the top ten process-optimization frameworks and explain when each one "
+              "applies.\"",
+         "D": "The org chart, so Claude understands who is involved at each stage of the "
+              "approval.",
      },
      answer="B",
      why="Optimization analysis is only as good as the process data provided: concrete "
@@ -590,12 +655,14 @@ dict(task="4.2", domain="d4",
        "training environment exists in week 4 — a dependency error an experienced PM spots "
        "immediately. What does this illustrate about Claude-assisted planning?",
      options={
-         "A": "AI-generated plans are unusable for project work.",
-         "B": "Draft plans accelerate the work, but dependency logic and feasibility need "
-              "human validation before the plan is adopted — the reviewer role is part of "
-              "the workflow.",
-         "C": "The prompt should have said 'do not make dependency errors.'",
-         "D": "Planning tasks require the most capable model, which would not err this way.",
+         "A": "AI-generated plans are unusable for real project scheduling and shouldn't be "
+              "attempted at all.",
+         "B": "Draft plans save time, but dependency logic needs human validation before "
+              "adoption.",
+         "C": "The prompt should have instructed the model not to make any dependency "
+              "errors.",
+         "D": "Planning needs the most capable model tier, which would not have made this "
+              "mistake.",
      },
      answer="B",
      why="Claude drafts plans fast and covers ground, but it reasons from what it is told — "
@@ -609,11 +676,14 @@ dict(task="4.3", domain="d4",
        "design and receives a sensible proposal. What is the main weakness of stopping "
        "here?",
      options={
-         "A": "The proposal was produced too quickly to be trustworthy.",
-         "B": "No alternatives were compared against the team's criteria, so nobody knows "
-              "what trade-offs the single proposal silently made.",
-         "C": "Claude's designs must always be discarded and rebuilt by humans.",
-         "D": "A single proposal cannot be piloted.",
+         "A": "The proposal arrived too quickly to have been thought through and can't be "
+              "trusted.",
+         "B": "No alternatives were compared against criteria, so its trade-offs stay "
+              "invisible.",
+         "C": "Claude's designs must always be discarded and rebuilt from scratch by the "
+              "humans.",
+         "D": "A single proposal cannot be piloted, because there is no comparison to "
+              "measure it.",
      },
      answer="B",
      why="Design quality comes from comparing options against explicit criteria — a lone "
@@ -627,11 +697,14 @@ dict(task="4.3", domain="d4",
        "drafts misjudge account health because a key data tab is missing from the inputs. "
        "What is the correct iteration response?",
      options={
-         "A": "Extend the pilot unchanged to gather more evidence.",
-         "B": "Fix the diagnosed cause — make the missing tab a required input and add a "
-              "health-assessment rubric — then re-pilot against the same success criteria.",
-         "C": "Declare the design failed and return to the manual process.",
-         "D": "Lower the success criteria so the current design passes.",
+         "A": "Extend the pilot unchanged for another two weeks to gather more evidence "
+              "before changing anything.",
+         "B": "Fix the diagnosed cause — require the missing tab, add a rubric — then "
+              "re-pilot.",
+         "C": "Declare the design a failure and return the team to the previous manual "
+              "process now.",
+         "D": "Lower the success criteria so that the current design passes on the existing "
+              "inputs.",
      },
      answer="B",
      why="Iteration means feeding pilot evidence back into the design: the failure traced "
@@ -644,11 +717,14 @@ dict(task="4.4", domain="d4",
      q="A finance team is adding Claude to its month-end close. Which division of labor "
        "reflects sound workflow integration?",
      options={
-         "A": "Claude drafts variance commentary, reconciliation summaries, and flags "
-              "anomalies; accountants investigate flags, make judgments, and sign off.",
-         "B": "Claude approves journal entries below a threshold to relieve the team.",
-         "C": "Claude handles the entire close; accountants audit it quarterly.",
-         "D": "Claude is excluded — financial processes cannot include AI assistance.",
+         "A": "Claude drafts variance commentary and flags anomalies; accountants judge and "
+              "sign off.",
+         "B": "Claude approves journal entries below a set threshold, to relieve the team's "
+              "workload.",
+         "C": "Claude runs the entire close and accountants audit the results once each "
+              "quarter.",
+         "D": "Claude is excluded entirely — financial close processes cannot involve AI "
+              "assistance.",
      },
      answer="A",
      why="Integration assigns drudgery (drafting, summarizing, anomaly-flagging) to the AI "
@@ -662,11 +738,13 @@ dict(task="4.4", domain="d4",
        "say they don't know when to trust the drafts or who is responsible if an error "
        "ships. What did the integration skip?",
      options={
-         "A": "A more capable model that would have earned trust automatically.",
-         "B": "Change management: documented guidance on when to trust vs. override the AI "
-              "step, error ownership, and training the team on the redesigned flow.",
-         "C": "A mandate requiring writers to use the tool.",
-         "D": "Nothing — adoption always takes years.",
+         "A": "A more capable model, which would have earned the writers' trust on its own.",
+         "B": "Change management: trust boundaries, error ownership, and training on the "
+              "new flow.",
+         "C": "A mandate from leadership requiring writers to use the tool on every "
+              "proposal they draft.",
+         "D": "Nothing — adoption of a new tool always takes years to reach meaningful "
+              "usage levels.",
      },
      answer="B",
      why="A workflow redesign is complete only when the humans in it know their new roles: "
@@ -679,13 +757,14 @@ dict(task="4.5", domain="d4",
      q="A department head asks an associate whether Claude could 'replace the two analysts "
        "who left.' Which response communicates value and limitations accurately?",
      options={
-         "A": "\"Yes — modern models outperform human analysts.\"",
-         "B": "\"It can absorb much of their drafting, summarization, and first-pass "
-              "analysis, measurably faster. It can't own judgment calls, verify its own "
-              "facts, or carry accountability — those transfer to the remaining team, so "
-              "let's size that load honestly.\"",
-         "C": "\"No — AI tools are unreliable for analytical work.\"",
-         "D": "\"That depends entirely on next year's model releases.\"",
+         "A": "\"Yes — current models outperform human analysts on most of the day-to-day "
+              "analytical work.\"",
+         "B": "\"It absorbs the drafting and first-pass analysis; judgment and "
+              "accountability don't transfer.\"",
+         "C": "\"No — AI tools are far too unreliable to be trusted with analytical work of "
+              "this kind.\"",
+         "D": "\"That depends entirely on which models ship over the next year, so it is "
+              "too early to say.\"",
      },
      answer="B",
      why="Honest stakeholder communication names what transfers (drafting, synthesis "
@@ -699,11 +778,14 @@ dict(task="4.5", domain="d4",
        "limitations: hallucination risk, training-data recency, and context limits. What "
        "should accompany each limitation to make the briefing effective?",
      options={
-         "A": "The mitigation built into the workflow (verification step, research "
-              "mode/current sources, summarize-and-restart practices).",
-         "B": "A technical explanation of why transformers exhibit each behavior.",
-         "C": "A comparison showing competitors' tools share the same flaws.",
-         "D": "Nothing — limitations should be listed but not dwelt on.",
+         "A": "The mitigation the workflow builds in: a verification step, current sources, "
+              "restarts.",
+         "B": "A technical explanation of why transformer architectures exhibit each of "
+              "these behaviors.",
+         "C": "A comparison showing that competitors' AI tools share exactly the same "
+              "weaknesses.",
+         "D": "Nothing further — limitations should be stated plainly and not dwelt on in a "
+              "briefing.",
      },
      answer="A",
      why="Limitations land as operating rules when paired with the control that manages "
@@ -717,12 +799,14 @@ dict(task="4.5", domain="d4",
 dict(task="5.1", domain="d5",
      q="When configuring a Claude Project, which placement of content is correct?",
      options={
-         "A": "Stable rules (role, tone, format, escalation) in instructions; reference "
-              "documents (style guide, fact sheets, templates) as knowledge; one-off "
-              "details in the individual chat.",
-         "B": "Everything in instructions, so nothing is ever missed.",
-         "C": "Everything as knowledge documents, including the tone rules.",
-         "D": "Everything in the first message of each chat, for transparency.",
+         "A": "Stable rules as instructions; documents as knowledge; one-off details in "
+              "chat.",
+         "B": "Everything in the instructions, so that nothing is ever missed by any chat "
+              "in the Project.",
+         "C": "Everything as knowledge documents, including the tone and escalation rules "
+              "for chats.",
+         "D": "Everything in the first message of each chat, so the context is visible and "
+              "auditable.",
      },
      answer="A",
      why="Instructions define how every chat behaves (stable rules); knowledge supplies "
@@ -737,11 +821,14 @@ dict(task="5.1", domain="d5",
        "just a folder of chats, and members still paste the style guide into each one. What "
        "is the corrective action?",
      options={
-         "A": "Ask members to paste more carefully from the newest version.",
-         "B": "Configure the Project properly: the durable behavioral rules as instructions "
-              "and the style guide as a knowledge document, so every chat starts briefed.",
-         "C": "Create one pinned chat containing the style guide for everyone to reuse.",
-         "D": "Replace the Project with a longer prompt template in the team wiki.",
+         "A": "Ask members to paste the style guide more carefully, from the newest "
+              "published version.",
+         "B": "Configure it: durable rules as instructions, the style guide as a knowledge "
+              "document.",
+         "C": "Create one pinned chat holding the style guide that everyone continues from "
+              "each time.",
+         "D": "Replace the Project with a longer prompt template kept in the team's "
+              "internal wiki.",
      },
      answer="B",
      why="The Project's value IS its configuration — instructions and knowledge inherited "
@@ -754,11 +841,14 @@ dict(task="5.2", domain="d5",
      q="Which knowledge source is the right candidate for a CONNECTOR rather than a file "
        "upload?",
      options={
-         "A": "The company's brand-voice guide, revised roughly once a year.",
-         "B": "The sales team's pipeline tracker in Google Drive, updated many times daily "
-              "and queried for current status.",
-         "C": "A published industry white paper the team references occasionally.",
-         "D": "Last year's annual report, used for historical comparisons.",
+         "A": "The company's brand-voice guide, revised roughly once a year by the "
+              "marketing team.",
+         "B": "The pipeline tracker in Google Drive, updated many times daily and queried "
+              "for status.",
+         "C": "A published industry white paper that the team references occasionally "
+              "during client work.",
+         "D": "Last year's annual report, used as a fixed baseline for historical "
+              "comparisons.",
      },
      answer="B",
      why="Connectors earn their governance overhead when the source changes faster than "
@@ -771,12 +861,14 @@ dict(task="5.2", domain="d5",
      q="To 'give Claude full context,' an associate proposes connecting the company's "
        "entire shared drive to a team Project. What is the primary problem?",
      options={
-         "A": "Connectors slow down response times proportionally to drive size.",
-         "B": "Connector scope is an access decision: a whole-drive connection sweeps in "
-              "confidential folders (HR, legal, M&A) nobody intended to expose, and buries "
-              "relevant content in noise — scope to the folders the work needs.",
-         "C": "Whole drives can only be connected by administrators.",
-         "D": "Nothing — more context always improves answers.",
+         "A": "Connectors slow responses down in proportion to the size of the drive "
+              "connected.",
+         "B": "Scope is an access decision: a whole drive sweeps in HR, legal, and M&A "
+              "material.",
+         "C": "Whole drives can only be connected by a workspace administrator, not by an "
+              "associate.",
+         "D": "Nothing — more available context reliably improves the quality of Claude's "
+              "answers.",
      },
      answer="B",
      why="Connecting a source grants the Project's users indirect reach into everything "
@@ -788,12 +880,14 @@ dict(task="5.2", domain="d5",
 dict(task="5.3", domain="d5",
      q="Which Project instruction is written in the most effective form?",
      options={
-         "A": "\"Always be accurate and double-check your work.\"",
-         "B": "\"If a question involves pricing exceptions, discounts beyond list, or "
-              "contract terms, respond only: 'Escalate to Deal Desk' — do not draft an "
+         "A": "\"Always be accurate, and double-check your work before you give me an "
               "answer.\"",
-         "C": "\"Try to be consistent with how the team usually handles things.\"",
-         "D": "\"Use good judgment about when questions are outside your scope.\"",
+         "B": "\"For pricing exceptions or contract terms, reply only 'Escalate to Deal "
+              "Desk.'\"",
+         "C": "\"Try to stay consistent with the way the team usually handles these "
+              "requests.\"",
+         "D": "\"Use good judgment about when a question falls outside your scope, and say "
+              "so.\"",
      },
      answer="B",
      why="Effective instructions are specific and testable — named categories, exact "
@@ -807,12 +901,14 @@ dict(task="5.3", domain="d5",
        "later there are 60+ rules, some contradictory, and behavior is erratic. What "
        "maintenance does this configuration need?",
      options={
-         "A": "More rules covering the cases where behavior is erratic.",
-         "B": "A pruning review: consolidate overlaps, resolve contradictions, delete "
-              "obsolete rules, and prioritize the few hard constraints — few sharp rules "
-              "outperform many soft ones.",
-         "C": "Splitting into two Projects, each with 30 rules.",
-         "D": "Moving all 60 rules into a knowledge document instead.",
+         "A": "Add further rules that cover the specific cases where the behavior has been "
+              "erratic lately.",
+         "B": "A pruning review: consolidate overlaps, resolve contradictions, keep few "
+              "sharp rules.",
+         "C": "Split the Project into two, each carrying about thirty of the existing "
+              "rules.",
+         "D": "Move all sixty rules into a knowledge document and leave the instructions "
+              "empty.",
      },
      answer="B",
      why="Instruction sprawl is a failure mode: conflicting standing orders produce "
@@ -825,11 +921,13 @@ dict(task="5.4", domain="d5",
      q="Who or what should ensure a business team's Project knowledge stays current after "
        "policies and prices change?",
      options={
-         "A": "The model, which should notice its documents have gone stale.",
-         "B": "A named owner operating agreed update triggers ('policy published → swap the "
-              "doc within a week') plus a periodic review sweep with visible versioning.",
-         "C": "Whichever team member next notices a wrong answer.",
-         "D": "IT, through an annual archive-and-rebuild of all Projects.",
+         "A": "The model, which should notice when the documents it was given have gone "
+              "stale.",
+         "B": "A named owner with update triggers and a periodic review sweep, with "
+              "versioning.",
+         "C": "Whichever team member is the next to notice that an answer has come back "
+              "wrong.",
+         "D": "IT, through an annual archive-and-rebuild of every Project it maintains.",
      },
      answer="B",
      why="No model can detect that reality changed outside its knowledge — currency is an "
@@ -845,9 +943,9 @@ dict(task="6.1", domain="d6",
        "associate, as stated and without additional controls?",
      options={
          "A": "Summarizing this week's customer feedback into themes for the product team.",
-         "B": "Issuing final approval or denial of employee expense claims.",
-         "C": "Sending AI-drafted responses to press inquiries without review.",
-         "D": "Determining which employees are selected in a restructuring.",
+         "B": "Issuing the final approval or denial decision on employee expense claims.",
+         "C": "Sending AI-drafted responses to press inquiries without any human review.",
+         "D": "Deciding which employees are selected for redundancy in a restructuring.",
      },
      answer="A",
      why="Feedback summarization is low-stakes, reversible, easily spot-checked, and "
@@ -862,12 +960,13 @@ dict(task="6.1", domain="d6",
        "manager proposes letting the system send them directly. What should an associate "
        "recognize?",
      options={
-         "A": "Natural workflow maturation — automation earning trust over time.",
-         "B": "Scope creep from assist to decide: the human review that made the use case "
-              "appropriate has eroded, and the proposal should trigger a fresh "
-              "appropriateness screen before any further automation.",
-         "C": "A model upgrade opportunity to improve the drafts.",
-         "D": "An efficiency win to implement, since complaints have not increased.",
+         "A": "Natural maturation of the workflow — the automation has steadily earned "
+              "trust over time.",
+         "B": "Scope creep from assist to decide: re-screen before automating any further.",
+         "C": "An opportunity to upgrade the model so the unread drafts come out even "
+              "stronger.",
+         "D": "An efficiency win worth implementing, since candidate complaints have not "
+              "increased.",
      },
      answer="B",
      why="Use-case fitness was conditional on human judgment in the loop; when review "
@@ -881,11 +980,13 @@ dict(task="6.2", domain="d6",
        "contain names, managers' names, and health disclosures. Policy restricts sharing "
        "personal data with AI tools. What is the compliant approach?",
      options={
-         "A": "Upload the transcripts unmodified — exit interviews are internal documents.",
-         "B": "Redact names, identifying details, and the health disclosures (which get "
-              "special-category handling), then analyze the anonymized themes.",
-         "C": "Upload everything but add 'treat this as confidential' to the prompt.",
-         "D": "Cancel the analysis — exit data is too sensitive for any AI use.",
+         "A": "Upload the transcripts unmodified, since exit interviews are internal "
+              "documents.",
+         "B": "Redact names and the health disclosures, then analyze the anonymized themes.",
+         "C": "Upload everything, but add 'treat this as confidential' to the top of the "
+              "prompt.",
+         "D": "Cancel the analysis — exit interview data is too sensitive for any AI use at "
+              "all.",
      },
      answer="B",
      why="Theme analysis survives anonymization intact, and health disclosures carry "
@@ -900,12 +1001,14 @@ dict(task="6.2", domain="d6",
        "row still contains job title, office location, and start date in a 40-person "
        "company. What should they consider?",
      options={
-         "A": "The dataset is anonymized — the names are gone.",
-         "B": "Combinations of quasi-identifiers can re-identify individuals in a small "
-              "population; aggregate or generalize the fields (or consult the privacy "
-              "owner) before treating the data as anonymized.",
-         "C": "Anonymization only matters for customer data, not employee data.",
-         "D": "Adding a 'do not identify individuals' instruction resolves the residual risk.",
+         "A": "The dataset is anonymized — the name column was removed before it was "
+              "uploaded.",
+         "B": "Quasi-identifiers can re-identify people in a 40-person firm; generalize the "
+              "fields.",
+         "C": "Anonymization requirements apply only to customer data, not internal "
+              "employee records.",
+         "D": "Adding a 'do not identify individuals' instruction resolves the residual "
+              "risk here.",
      },
      answer="B",
      why="'Marketing Director, Munich office, started March 2024' identifies one person as "
@@ -919,12 +1022,13 @@ dict(task="6.2", domain="d6",
        "account 'since our corporate Claude workspace is at its seat limit this week.' What "
        "is the correct response?",
      options={
-         "A": "Agree, provided the contract is deleted from the account afterwards.",
-         "B": "Decline: customer contractual data in an unapproved personal tool violates "
-              "data-handling policy and likely customer confidentiality terms — resolve the "
-              "seat issue or use another approved channel instead.",
-         "C": "Agree, but paste only the first half of the contract to reduce exposure.",
-         "D": "Agree if the customer's name is replaced with an alias.",
+         "A": "Agree, provided the contract is deleted from the personal account "
+              "immediately afterwards.",
+         "B": "Decline: customer data in an unapproved personal tool breaches policy.",
+         "C": "Agree, but paste only the first half of the contract, to reduce the total "
+              "exposure.",
+         "D": "Agree if the customer's name and signature block are replaced with a neutral "
+              "alias.",
      },
      answer="B",
      why="The violation is the destination, not the volume: unapproved personal tools sit "
@@ -937,12 +1041,14 @@ dict(task="6.3", domain="d6",
      q="An associate's new AI use case — summarizing recorded customer calls — is not "
        "mentioned anywhere in the company's AI policy. How should they proceed?",
      options={
-         "A": "Proceed; anything not prohibited is permitted.",
-         "B": "Treat 'undefined' as 'not yet approved': ask the AI governance owner, since "
-              "call recordings raise consent and personal-data questions the policy's "
-              "authors may not have considered.",
-         "C": "Proceed quietly and stop if anyone objects.",
-         "D": "Wait for the next annual policy revision before doing anything.",
+         "A": "Proceed — anything the policy does not explicitly prohibit is permitted by "
+              "default.",
+         "B": "Treat undefined as not yet approved and ask the governance owner about "
+              "consent.",
+         "C": "Proceed quietly for now, and stop the moment somebody raises an objection to "
+              "it.",
+         "D": "Wait for the next annual policy revision to address the case before doing "
+              "anything.",
      },
      answer="B",
      why="Policy silence on a novel, data-sensitive use case is a question, not a "
@@ -956,12 +1062,12 @@ dict(task="6.3", domain="d6",
        "manager tells an associate to skip the label 'because clients get nervous about "
        "AI.' What should the associate do?",
      options={
-         "A": "Follow the manager's instruction — managers outrank policy in their own area.",
-         "B": "Keep the disclosure, tell the manager the policy requires it, and if the "
-              "manager insists, route the conflict to the policy owner rather than silently "
-              "violating or silently complying.",
-         "C": "Skip the label but keep private notes proving AI was used.",
-         "D": "Add the label in a font too small to notice.",
+         "A": "Follow the manager's instruction — managers outrank written policy within "
+              "their own area.",
+         "B": "Keep the disclosure, cite the policy, and escalate to the policy owner if "
+              "pressed.",
+         "C": "Skip the label, but keep private notes proving that AI assistance was used.",
+         "D": "Add the label in a font small enough that clients are unlikely to notice it.",
      },
      answer="B",
      why="A manager's preference doesn't amend policy — and disclosure rules exist "
@@ -975,11 +1081,13 @@ dict(task="6.4", domain="d6",
        "error. The associate who produced it says 'the AI generated that section.' What is "
        "the correct accountability position?",
      options={
-         "A": "Correct — responsibility lies with the tool that produced the error.",
-         "B": "The human who reviewed, approved, and published the content owns the error; "
-              "AI assistance never transfers accountability, which is why review exists.",
-         "C": "Responsibility is split evenly between the associate and the vendor.",
-         "D": "No one is accountable, since the workflow was approved by governance.",
+         "A": "Correct — responsibility sits with the tool that generated the erroneous "
+              "section.",
+         "B": "The human who reviewed, approved, and published it owns the error; review is "
+              "why.",
+         "C": "Responsibility is split evenly between the associate and the model's vendor.",
+         "D": "Nobody is accountable, since the governance team approved this workflow "
+              "already.",
      },
      answer="B",
      why="'The AI did it' is the accountability anti-pattern: tools don't hold "
@@ -992,12 +1100,14 @@ dict(task="6.4", domain="d6",
      q="Before relying on a Claude-assisted scoring aid that prioritizes which customer "
        "complaints get expedited handling, what bias check is most important?",
      options={
-         "A": "Confirm the scoring prompt does not contain any demographic words.",
-         "B": "Compare expedite rates across customer groups and regions over a sample "
-              "period, looking for systematic skew the scoring may have learned from "
-              "historical handling patterns.",
-         "C": "Ask the model whether its scoring is fair.",
-         "D": "None — complaint routing is operational, not people-affecting.",
+         "A": "Confirm the scoring prompt contains no demographic words or protected "
+              "attributes.",
+         "B": "Compare expedite rates across customer groups over a sample period, looking "
+              "for skew.",
+         "C": "Ask the model whether its own scoring is fair to all customer groups "
+              "equally.",
+         "D": "None — complaint routing is an operational process, not a people-affecting "
+              "one.",
      },
      answer="B",
      why="Bias is detected in outcomes, not vocabulary: proxies (product tier, region, "
@@ -1013,11 +1123,12 @@ dict(task="7.1", domain="d7",
        "consistently wrong about reimbursement limits, which changed last month. What is "
        "the most likely cause and fix?",
      options={
-         "A": "The model tier is too low — upgrade and retry the same question.",
-         "B": "The Project's policy document predates the change — replace the stale "
-              "knowledge source and re-test the failing questions.",
-         "C": "The prompt lacks emphasis — add 'pay special attention to limits.'",
-         "D": "Context overflow — start a new conversation.",
+         "A": "The model tier is too low — upgrade to a stronger model and ask the same "
+              "question.",
+         "B": "The Project's policy document predates the change — replace it and re-test.",
+         "C": "The prompt lacks emphasis — add 'pay special attention to reimbursement "
+              "limits.'",
+         "D": "Context overflow in a long conversation — start a fresh chat and ask again.",
      },
      answer="B",
      why="Correct-in-general but wrong-on-recent-specifics is the signature of a stale "
@@ -1031,12 +1142,14 @@ dict(task="7.1", domain="d7",
        "replaces a knowledge file — and the workflow starts working. What is the problem "
        "with this outcome?",
      options={
-         "A": "Nothing — working is working.",
-         "B": "Three variables changed at once, so nobody knows which fix mattered; the "
-              "diagnosis is lost, the two unnecessary changes carry ongoing cost, and the "
-              "same failure will take just as long to solve next time.",
-         "C": "The model swap was wasteful; the other two changes were free.",
-         "D": "Every fix should have been applied twice to confirm it.",
+         "A": "Nothing is wrong — the workflow works again, which is the point of "
+              "troubleshooting.",
+         "B": "Three variables changed at once, so the actual cause — and the diagnosis — "
+              "is lost.",
+         "C": "The model swap was wasteful; the other two changes cost nothing and can "
+              "stay.",
+         "D": "Each of the three fixes should have been applied twice, to confirm it really "
+              "held.",
      },
      answer="B",
      why="Change-one-variable-and-re-test is what converts a fix into knowledge: bundled "
@@ -1050,12 +1163,13 @@ dict(task="7.2", domain="d7",
        "shorten the openings and remove a boilerplate paragraph — the same edits, by many "
        "users. What should the workflow owner do?",
      options={
-         "A": "Nothing — editing drafts is what users are supposed to do.",
-         "B": "Treat the repeated edit pattern as calibration feedback: update the "
-              "prompt/instructions so drafts start where users keep moving them, then "
-              "confirm the edit rate drops.",
-         "C": "Ask users to stop editing so outputs stay measurable.",
-         "D": "Rebuild the workflow on a more capable model.",
+         "A": "Nothing — editing the drafts is exactly what the users are supposed to be "
+              "doing.",
+         "B": "Treat the repeated edits as calibration feedback and update the "
+              "instructions.",
+         "C": "Ask users to stop editing the drafts so the outputs stay measurable over "
+              "time.",
+         "D": "Rebuild the workflow on a more capable model that writes tighter openings.",
      },
      answer="B",
      why="Systematic identical edits are the workflow telling you its default output is "
@@ -1069,12 +1183,13 @@ dict(task="7.2", domain="d7",
        "once last week. Shut the pilot down?' Weekly metrics show a 94% acceptance rate "
        "across 300 summaries. How should the associate respond?",
      options={
-         "A": "Shut the pilot down — executive concerns override metrics.",
-         "B": "Investigate the specific failed summary, report findings alongside the "
-              "systematic acceptance data, and recommend continuing while fixing whatever "
-              "the single case reveals.",
-         "C": "Dismiss the complaint — one failure in 300 is statistically negligible.",
-         "D": "Remove the assistant's account from the pilot group.",
+         "A": "Shut the pilot down — a sponsor's concern outweighs the acceptance metrics.",
+         "B": "Investigate the failed summary, report it alongside the 94% data, and "
+              "continue.",
+         "C": "Dismiss the complaint — one failure in 300 summaries is statistically "
+              "negligible.",
+         "D": "Remove the assistant's account from the pilot group so the complaints stop "
+              "coming.",
      },
      answer="B",
      why="Anecdotes get investigated, not obeyed and not dismissed: the single case may "
@@ -1088,11 +1203,12 @@ dict(task="7.3", domain="d7",
        "drafting with re-pasted context, 25 waiting in a single reviewer's queue, and 5 for "
        "distribution. Where should optimization start?",
      options={
-         "A": "The drafting step — AI response speed is the core of an AI workflow.",
-         "B": "The review queue — it is 60% of cycle time; restructure it (risk-flagged "
-              "deep review + spot-checks) while a Project eliminates the re-pasted context.",
-         "C": "Distribution, since it is the final step users see.",
-         "D": "All three steps simultaneously, for maximum improvement.",
+         "A": "The drafting step — response speed is the core of any AI-assisted workflow.",
+         "B": "The review queue — it is 60% of cycle time; restructure it and add a "
+              "Project.",
+         "C": "Distribution, since it is the final step and the one that users actually "
+              "see.",
+         "D": "All three steps at once, since that produces the largest total improvement.",
      },
      answer="B",
      why="Optimization follows the profile: the bottleneck is the human queue, not the AI "
@@ -1106,13 +1222,14 @@ dict(task="7.3", domain="d7",
        "cheapest model and removes the editorial review 'since quality has been fine for "
        "months.' What optimization principle does this violate?",
      options={
-         "A": "None — removing unneeded steps is the definition of optimization.",
+         "A": "None — removing steps that no longer earn their keep is exactly what "
+              "optimizing is.",
          "B": "Efficiency changes must keep the quality safeguard and a visible quality "
-              "metric: downsizing the model AND removing the safety net at once, on "
-              "customer-facing output, is cost-cutting with no way to see the degradation "
-              "it may cause.",
-         "C": "Customer-facing content should always use the most capable model.",
-         "D": "Editorial review should be replaced by a second model, not removed.",
+              "metric.",
+         "C": "Customer-facing content should always run on the most capable model "
+              "available.",
+         "D": "Editorial review should have been replaced by a second model, not removed "
+              "outright.",
      },
      answer="B",
      why="The review net is what MADE the historical quality 'fine' — removing it while "

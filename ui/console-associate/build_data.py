@@ -83,8 +83,19 @@ def build_cheat():
     return [{"d": d, "fact": fact, "task": task} for d, fact, task in FACTS]
 
 
+def _length_bias(items):
+    """(share of items whose correct option is the longest, mean correct/distractor ratio)."""
+    longest = sum(1 for q in items
+                  if len(q["options"][q["answer"]]) == max(len(o) for o in q["options"]))
+    correct = [len(q["options"][q["answer"]]) for q in items]
+    others = [len(o) for q in items
+              for i, o in enumerate(q["options"]) if i != q["answer"]]
+    return longest / len(items), (sum(correct) / len(correct)) / (sum(others) / len(others))
+
+
 def validate(tasks, questions, mock, cheat):
     errors = []
+    warnings = []
     task_ids = {t["id"] for t in tasks}
     domain_ids = {d["id"] for d in DOMAINS}
 
@@ -151,10 +162,25 @@ def validate(tasks, questions, mock, cheat):
             if d not in domain_ids:
                 errors.append(f"scenario {s['id']}: unknown domain {d}")
 
+    # Option length must not give the answer away: a candidate who always picks the
+    # longest option should score no better than chance (25%).
+    share, ratio = _length_bias(mock)
+    if share > 0.45:
+        errors.append(f"mock: correct option is the longest in {share:.0%} of items (max 45%) "
+                      "— answer length is a tell")
+    if ratio > 1.15:
+        errors.append(f"mock: correct options average {ratio:.2f}x distractor length (max 1.15x)")
+    q_share, q_ratio = _length_bias(questions)
+    if q_share > 0.45 or q_ratio > 1.15:
+        warnings.append(f"practice quiz: correct option is the longest in {q_share:.0%} of items "
+                        f"at {q_ratio:.2f}x distractor length — same tell, not yet rebalanced")
+
     if errors:
         for e in errors:
             print(f"  ERROR: {e}")
         sys.exit(1)
+    for w in warnings:
+        print(f"  WARNING: {w}")
 
 
 def js(obj):
