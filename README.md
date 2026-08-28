@@ -6,14 +6,15 @@ link and start studying.**
 
 | Certification | Live console | Study experience |
 |---|---|---|
-| **Claude Certified Architect – Foundations** | [jacinthpaul.github.io/Claude-Certified-Architect](https://jacinthpaul.github.io/Claude-Certified-Architect/) | 5 domains · 30 lessons with **runnable Python demos** · 6 scenario systems · cheat sheet · 60-question mock exam · progress + certificate |
-| **Claude Certified Associate – Foundations (CCAO-F)** | […/associate/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate/) | 7 domains · 30 lessons with **claude.ai chat walkthroughs** · 6 business scenarios · cheat sheet · blueprint-weighted 60-question mock exam · progress + certificate |
+| **Certification Hub** (start here) | [jacinthpaul.github.io/Claude-Certified-Architect](https://jacinthpaul.github.io/Claude-Certified-Architect/) | Landing page routing all four certifications — two consoles live, two coming soon |
+| **Claude Certified Architect – Foundations** | […/architect-foundations/](https://jacinthpaul.github.io/Claude-Certified-Architect/architect-foundations/) | 5 domains · 30 lessons with **runnable Python demos** · 6 scenario systems · cheat sheet · 60-question mock exam · progress + certificate |
+| **Claude Certified Associate – Foundations (CCAO-F)** | […/associate-foundations/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate-foundations/) | 7 domains · 30 lessons with **claude.ai chat walkthroughs** · 6 business scenarios · cheat sheet · blueprint-weighted 60-question mock exam · progress + certificate |
 
 Both consoles are self-paced courses: a "Start here" page, per-lesson questions you answer
 until correct, a timed mock exam scored 100–1000 (pass ≥ 720, like the real exams), and a
-completion certificate. Progress is saved in your browser. More certification consoles
-(and a unified hub) are planned — see [CLAUDE.md](CLAUDE.md) for the multi-console
-strategy this repo follows.
+completion certificate. Progress is saved in your browser. Two more consoles
+(Developer – Foundations and Architect – Professional) are planned — see
+[CLAUDE.md](CLAUDE.md) for the multi-console strategy this repo follows.
 
 ---
 
@@ -57,7 +58,7 @@ deterministic simulator so the architecture and the teaching points are identica
 
 ## Quick start
 
-Or just open the **[hosted console](https://jacinthpaul.github.io/Claude-Certified-Architect/)** — no clone, no install. To run locally:
+Or just open the **[hosted console](https://jacinthpaul.github.io/Claude-Certified-Architect/architect-foundations/)** — no clone, no install. To run locally:
 
 ```bash
 # nothing to install for the offline (simulated) demos — standard library only
@@ -148,7 +149,7 @@ its non-technical audience (operations, marketing, project management, education
 communications), so lessons show **claude.ai chat walkthroughs** (a weak prompt vs an
 improved prompt, with Claude's responses and commentary) instead of terminal demos.
 
-**Open it:** **[https://jacinthpaul.github.io/Claude-Certified-Architect/associate/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate/)**
+**Open it:** **[https://jacinthpaul.github.io/Claude-Certified-Architect/associate-foundations/](https://jacinthpaul.github.io/Claude-Certified-Architect/associate-foundations/)**
 
 What's inside — all aligned to the official CCAO-F Exam Guide (60 items · 120 min ·
 scaled 100–1000 · pass ≥ 720):
@@ -195,10 +196,35 @@ maintaining them live in [CLAUDE.md](CLAUDE.md).
 │   └── content/               ← domains, lessons, questions, mock bank, scenarios, cheatsheet
 ├── teaching/                  ← lesson plan / session guide
 ├── ui/                        ← built-in zero-dependency web console
-│   ├── console/               ← Architect React console (hosted at /)
-│   └── console-associate/     ← Associate React console (hosted at /associate/)
-└── .github/workflows/         ← CI smoke test + GitHub Pages deploy (stages BOTH consoles)
+│   ├── hub/                   ← Certification Hub landing page (hosted at /)
+│   ├── console/               ← Architect React console (hosted at /architect-foundations/)
+│   │   └── tutorials/         ← downloadable tutorial PDFs for this course
+│   └── console-associate/     ← Associate React console (hosted at /associate-foundations/)
+│       └── tutorials/         ← downloadable tutorial PDFs for this course
+└── .github/workflows/         ← CI smoke test + GitHub Pages deploy (stages hub + consoles)
 ```
+
+## Tutorial PDFs
+
+Each course ships its printable companion handbooks inside its own console folder,
+so they deploy under that course's path and share as plain, permanent links:
+
+| Tutorial | Link |
+|---|---|
+| Architect – Foundations · Tutorial 1 | [`…/architect-foundations/tutorials/claude-certified-architect-foundations-tutorial-1.pdf`](https://jacinthpaul.github.io/Claude-Certified-Architect/architect-foundations/tutorials/claude-certified-architect-foundations-tutorial-1.pdf) |
+
+They are surfaced in two places: a **Download the tutorial** card (and a sidebar
+*Downloads* link) on each console's Start here page, and a **Study material** list
+at the bottom of the hub.
+
+Adding one is a file drop plus a config entry — no app code changes:
+
+1. put the PDF in `ui/console<-course>/tutorials/`;
+2. add an entry to the `tutorials` array in that console's `assets/config.js`;
+3. add one `<li>` to the downloads list in `ui/hub/index.html`;
+4. bump the console's `?v=YYYYMMDDx` cache-bust query.
+
+A console whose `tutorials` array is empty hides the section entirely.
 
 ## The web UI
 
@@ -210,11 +236,11 @@ There are two browser consoles; both run the repo's demos and the quiz, and neit
 The polished console: a dashboard, domain/task sidebar, **Scenarios** and **Cheat sheet**
 views, light/dark themes, "mark covered" progress, and the interactive 12-question quiz.
 
-- **Hosted (zero setup):** **[https://jacinthpaul.github.io/Claude-Certified-Architect/](https://jacinthpaul.github.io/Claude-Certified-Architect/)**
-  — `.github/workflows/pages.yml` stages this console at `/` and the Associate console at
-  `/associate/` into one Pages site and deploys on every push. As a static page it shows
-  the demo output baked into the page; the sidebar, quiz, and cheat sheet are fully
-  interactive.
+- **Hosted (zero setup):** **[https://jacinthpaul.github.io/Claude-Certified-Architect/architect-foundations/](https://jacinthpaul.github.io/Claude-Certified-Architect/architect-foundations/)**
+  — `.github/workflows/pages.yml` stages the hub at `/`, this console at
+  `/architect-foundations/`, and the Associate console at `/associate-foundations/` into
+  one Pages site and deploys on every push. As a static page it shows the demo output
+  baked into the page; the sidebar, quiz, and cheat sheet are fully interactive.
 - **Locally, with live demo runs:** `python3 ui/console/api_server.py` then open
   `http://127.0.0.1:8000` — clicking **Run** executes the actual demo file and streams its
   real output. See `ui/console/README.md`.

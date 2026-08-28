@@ -106,6 +106,12 @@ a { color: inherit; }
   font-size: 11.5px;
   color: var(--text-faint);
 }
+.foot-built {
+  font-size: 12.5px;
+  color: var(--text-soft);
+  margin: 0 0 10px;
+}
+.foot-built b { color: var(--text); }
 .foot-disclaimer {
   font-size: 10px;
   line-height: 1.7;
@@ -208,6 +214,7 @@ a { color: inherit; }
   color: var(--text-soft); font-size: 12.5px; font-weight: 500; transition: all .12s;
 }
 .tb-btn:hover { border-color: var(--border-strong); color: var(--text); }
+a.tb-btn { text-decoration: none; }
 .tb-icon { width: 16px; height: 16px; display: block; }
 
 /* mobile drawer controls — hidden on desktop, shown ≤820px */
@@ -401,7 +408,6 @@ a { color: inherit; }
   .demo-layout { grid-template-columns: 1fr; }
   .demo-side { position: static; }
   .grid-domains, .themes, .stat-row { grid-template-columns: 1fr 1fr; }
-  .course-map { grid-template-columns: 1fr; }
 }
 
 /* ===================== Course features ===================== */
@@ -443,6 +449,17 @@ a { color: inherit; }
 .map-ic { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); border: 1px solid color-mix(in oklch, var(--accent) 28%, transparent); flex: none; }
 .map-card h4 { margin: 0 0 4px; font-size: 14px; }
 .map-card p { margin: 0; font-size: 12.5px; color: var(--text-soft); line-height: 1.5; }
+@media (max-width: 1080px) { .course-map { grid-template-columns: 1fr; } }
+/* tutorial download cards (Start here) */
+.dl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 12px; }
+.dl-card { padding: 16px 18px; display: flex; gap: 13px; align-items: flex-start; text-decoration: none; color: inherit; transition: border-color .15s ease, transform .15s ease; }
+.dl-card:hover { border-color: color-mix(in oklch, var(--accent) 45%, var(--border)); transform: translateY(-1px); }
+.dl-card h4 { margin: 0 0 4px; font-size: 14px; }
+.dl-card p { margin: 0; font-size: 12.5px; color: var(--text-soft); line-height: 1.5; }
+.dl-body { min-width: 0; }
+.dl-meta { display: inline-block; margin-top: 8px; font-size: 11px; color: var(--text-faint); letter-spacing: 0.02em; }
+@media (prefers-reduced-motion: reduce) { .dl-card { transition: none; } .dl-card:hover { transform: none; } }
+
 .anatomy { padding: 8px 6px; }
 .anat-step { display: grid; grid-template-columns: 30px 150px 1fr; gap: 12px; align-items: center; padding: 11px 14px; border-top: 1px dashed var(--border); }
 .anat-step:first-child { border-top: none; }

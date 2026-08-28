@@ -1,17 +1,18 @@
-name: Deploy Exam Prep Consoles to GitHub Pages
+name: Deploy Certification Hub to GitHub Pages
 
-# Publishes BOTH static consoles as one Pages site:
-#   /            -> ui/console            (Claude Certified Architect – Foundations)
-#   /associate/  -> ui/console-associate  (Claude Certified Associate – Foundations)
-# Each console loads React/Babel from a CDN and runs fully client-side from the
-# content baked into its assets/data.js — no backend needed on Pages.
+# Publishes a static site assembled from:
+#   /                        <- ui/hub/           (certification hub landing page)
+#   /architect-foundations/  <- ui/console/       (Architect Foundations exam console)
+#   /associate-foundations/  <- ui/console-associate/ (Associate Foundations exam console)
+# The React consoles load React/Babel from a CDN and, with no backend reachable,
+# fall back to the demo output baked into assets/data.js — so they are fully
+# interactive as static pages (sidebar, demos, quiz, cheat sheet, scenarios).
+# Future courses (developer-foundations, architect-professional) get one copy
+# step each when their consoles exist.
 
 on:
   push:
-    branches:
-      - claude/architect-exam-codebase-7ytdjz
-      - claude/associate-foundations-course-plan-aiqsgq
-      - main
+    branches: [claude/architect-exam-codebase-7ytdjz, main]
   workflow_dispatch:
 
 permissions:
@@ -31,16 +32,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Assemble site (hub + course consoles)
+        run: |
+          mkdir -p _site
+          cp ui/hub/index.html _site/index.html
+          mkdir -p _site/architect-foundations
+          cp -r ui/console/. _site/architect-foundations/
+          mkdir -p _site/associate-foundations
+          cp -r ui/console-associate/. _site/associate-foundations/
       - name: Configure Pages (auto-enable if needed)
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Stage both consoles into one site
-        run: |
-          mkdir -p _site/associate
-          cp -r ui/console/. _site/
-          cp -r ui/console-associate/. _site/associate/
-      - name: Upload the site
+      - name: Upload the assembled site
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site

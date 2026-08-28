@@ -9,11 +9,14 @@ certifications, deployed together as a single GitHub Pages site:
 
 | Console | Live path | App code | Content source of truth | Data generator |
 |---|---|---|---|---|
-| Architect – Foundations | `/` | `ui/console/` | `exam/*.py` + `domains/*` runnable demos | `python3 ui/console/build_data.py` |
-| Associate – Foundations (CCAO-F) | `/associate/` | `ui/console-associate/` | `associate/content/*.py` | `python3 ui/console-associate/build_data.py` |
+| Certification Hub (landing page) | `/` | `ui/hub/` | `ui/hub/index.html` (static, self-contained) | — |
+| Architect – Foundations | `/architect-foundations/` | `ui/console/` | `exam/*.py` + `domains/*` runnable demos | `python3 ui/console/build_data.py` |
+| Associate – Foundations (CCAO-F) | `/associate-foundations/` | `ui/console-associate/` | `associate/content/*.py` | `python3 ui/console-associate/build_data.py` |
 
-More consoles (and a unified hub landing page) are planned — follow the same
-pattern: one `ui/console-<name>/` folder + one content package per cert.
+More consoles (Developer – Foundations, Architect – Professional) are planned —
+follow the same pattern: one `ui/console-<name>/` folder + one content package
+per cert, deployed at `/<cert>-<tier>/`, then flip that cert's hub card from
+`soon` to `active`.
 
 Each console is a single-file React app (CDN React + Babel Standalone, no build
 step) rendering a generated `assets/data.js`. They are **full forks, not shared
@@ -48,11 +51,26 @@ When asked for an enhancement, first determine the scope — ask if unclear:
 5. **Never hard-code course identity in app code.** No
    "if this is the associate console…" branches inside `app.jsx` — anything
    course-specific (branding, counts, weights, labels, demo type) belongs in
-   the data model or config. This keeps the planned refactor cheap: when the
-   unified hub is built (at 3–4 consoles), extract a shared engine
+   the data model or config. This keeps the planned refactor cheap: at 3–4
+   consoles, extract a shared engine
    (`ui/shared/`) that renders any cert's data package, with per-console
    config for branding/namespace/accent. Until then, fork-and-port is the
    deliberate trade-off — do not extract shared code prematurely.
+
+## Tutorial PDFs
+
+Downloadable handbooks live **per course**, in that console's own folder:
+`ui/console/tutorials/`, `ui/console-associate/tutorials/`, and so on. The Pages
+workflow already copies each console folder wholesale, so a PDF dropped there is
+served at `/<course>/tutorials/<file>.pdf` with no workflow change.
+
+Naming: `claude-certified-<cert>-<tier>-tutorial-<n>.pdf`.
+
+The console learns about its PDFs only from the `tutorials` array in its
+`assets/config.js` (title, blurb, relative `file`, `meta`) — per rule 5 above,
+never from `app.jsx`. An empty array hides the console's Downloads section.
+Adding a tutorial is: drop the file, add the config entry, add one `<li>` to the
+downloads list in `ui/hub/index.html`, bump the console's cache-bust query.
 
 ## Build & verify
 
@@ -80,7 +98,10 @@ To verify a console end-to-end, stage the site and drive it with the local
 Chromium (`/opt/pw-browsers/chromium` in Claude Code remote sessions):
 
 ```bash
-mkdir -p _site/associate && cp -r ui/console/. _site/ && cp -r ui/console-associate/. _site/associate/
+mkdir -p _site/architect-foundations _site/associate-foundations
+cp ui/hub/index.html _site/index.html
+cp -r ui/console/. _site/architect-foundations/
+cp -r ui/console-associate/. _site/associate-foundations/
 cd _site && python3 -m http.server 8931
 ```
 
@@ -90,9 +111,10 @@ CDN references in the committed `index.html`.
 
 ## Deploy
 
-`.github/workflows/pages.yml` stages BOTH consoles into one Pages artifact
-(architect at `/`, associate at `/associate/`) and deploys on push to the
-branches listed in its trigger. When adding a new console or deploy branch:
+`.github/workflows/pages.yml` stages the hub and every console into one Pages
+artifact (hub at `/`, architect at `/architect-foundations/`, associate at
+`/associate-foundations/`) and deploys on push to the branches listed in its
+trigger. When adding a new console or deploy branch:
 
 - add the `cp -r` staging line and the trigger branch in `pages.yml`;
 - the `github-pages` **environment → Deployment branches** setting must allow
