@@ -211,6 +211,7 @@ so they deploy under that course's path and share as plain, permanent links:
 
 | Tutorial | Link |
 |---|---|
+| Associate – Foundations · Tutorial 1 | [`…/associate-foundations/tutorials/claude-certified-associate-foundations-tutorial-1.pdf`](https://jacinthpaul.github.io/Claude-Certified-Architect/associate-foundations/tutorials/claude-certified-associate-foundations-tutorial-1.pdf) |
 | Architect – Foundations · Tutorial 1 | [`…/architect-foundations/tutorials/claude-certified-architect-foundations-tutorial-1.pdf`](https://jacinthpaul.github.io/Claude-Certified-Architect/architect-foundations/tutorials/claude-certified-architect-foundations-tutorial-1.pdf) |
 
 They are surfaced in two places: a **Download the tutorial** card (and a sidebar

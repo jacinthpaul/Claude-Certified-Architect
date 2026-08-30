@@ -5,8 +5,16 @@ window.CCAF_CONFIG = {
   live: false,
 
   // Downloadable tutorial handbooks for THIS course — same contract as the
-  // Architect console (see ui/console/assets/config.js). Empty until the first
-  // Associate PDF lands in ui/console-associate/tutorials/; while empty the
-  // console's Downloads section is hidden.
-  tutorials: [],
+  // Architect console (see ui/console/assets/config.js). Paths are relative to
+  // the console folder, which the Pages workflow copies verbatim, so each file
+  // is served from /associate-foundations/tutorials/<file>.pdf. An empty list
+  // hides the console's Downloads section entirely.
+  tutorials: [
+    {
+      title: "Tutorial 1 — Foundations handbook",
+      blurb: "The full Associate Foundations walkthrough in print form: the seven exam domains, all 30 blueprint objectives, and the judgment the CCAO-F exam tests — plus a cheat sheet and a two-week study plan.",
+      file: "tutorials/claude-certified-associate-foundations-tutorial-1.pdf",
+      meta: "PDF · 37 pages · 1.0 MB",
+    },
+  ],
 };

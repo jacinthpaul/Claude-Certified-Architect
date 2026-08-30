@@ -2,8 +2,9 @@
 
 Downloadable companion handbooks for the Associate Foundations console.
 
-**Empty for now** — the `tutorials` array in `../assets/config.js` is `[]`, so the
-console hides its Downloads section until the first PDF lands here.
+Currently shipping `claude-certified-associate-foundations-tutorial-1.pdf`
+(37 pages) — listed in the `tutorials` array in `../assets/config.js`. An empty
+array hides the console’s Downloads section entirely.
 
 This whole folder is copied verbatim into the deployed console by
 `.github/workflows/pages.yml` (`cp -r ui/console-associate/. _site/associate-foundations/`),
